@@ -6,7 +6,7 @@ using System.Web;
 
 namespace NSICollections.Models
 {
-    public class CollectionViewModels
+    public class CollectionViewModel
     {
         [Display(Name = "Title")]
         public string Title { get; set; }
