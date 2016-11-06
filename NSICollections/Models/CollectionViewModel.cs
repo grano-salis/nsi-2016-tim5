@@ -14,7 +14,7 @@ namespace NSICollections.Models
         [Display(Name = "Description")]
         public string Description { get; set; }
 
-        [Display(Name = "Is Private")]
+        [Display(Name = "Private")]
         public bool IsPrivate { get; set; }
     }
 }
