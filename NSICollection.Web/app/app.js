@@ -22,6 +22,25 @@
     });
 
 
+  var serviceBase = "";
+
+  if (window.location.origin.search("localhost") == -1) {
+      serviceBase = window.location.origin + "/api/";
+  } else {
+      serviceBase = 'http://localhost:60824/';
+  }
+
+  app.constant('ngAuthSettings', {
+      apiServiceBaseUri: serviceBase,
+      clientId: 'ngAuthApp'
+  });
+
+  app.config(['$httpProvider', function ($httpProvider) {
+      $httpProvider.defaults.useXDomain = true;
+      delete $httpProvider.defaults.headers.common['X-Requested-With'];
+  }
+  ]);
+
     
 
 })();

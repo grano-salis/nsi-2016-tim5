@@ -37,26 +37,28 @@
 
     </div>
     <div class="col-md-5">
-        <table class="table tableCollection">
-            <tr>
-                <th>&nbsp;</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Private</th>
-            </tr>
-            <tr ng-repeat="item in collectionList">
-                <td><i class="fa fa-1x fa-folder text-primary sr-icons"></i></td>
-                <td>{{item.title}}</td>
-                <td class="wordBreak">{{item.description}}</td>
-                <td ng-switch on={{item.isprivate}}>
-                    <div ng-switch-when="true">
-                        <i class="fa fa-1x fa-check text-primary sr-icons"></i>
-                    </div>
-                    <div ng-switch-when="false">
-                        <i class="fa fa-1x fa-times text-primary sr-icons"></i>
-                    </div>
-                </td>
-            </tr>
-        </table>
+        <div ng-if="collectionList.length > 0">         
+            <table class="table tableCollection">
+                <tr>
+                    <th>&nbsp;</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Private</th>
+                </tr>
+                <tr ng-repeat="item in collectionList">
+                    <td><i class="fa fa-1x fa-folder text-primary sr-icons"></i></td>
+                    <td>{{item.title}}</td>
+                    <td class="wordBreak">{{item.description}}</td>
+                    <td ng-switch on={{item.isprivate}}>
+                        <div ng-switch-when="true">
+                            <i class="fa fa-1x fa-check text-primary sr-icons"></i>
+                        </div>
+                        <div ng-switch-when="false">
+                            <i class="fa fa-1x fa-times text-primary sr-icons"></i>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
 </div>
