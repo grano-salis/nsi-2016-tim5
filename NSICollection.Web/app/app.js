@@ -16,6 +16,11 @@
             .when('/login', {
                 templateUrl : 'views/loginForm.html',
                 controller  : 'loginCtrl'
+            })
+
+            .when('/addItem', {
+                templateUrl : 'views/addItem.html',
+                controller  : 'itemCtrl'
             });
 
             

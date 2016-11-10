@@ -425,3 +425,25 @@ body {
 .tableCollection {
     max-width:95%;
 }
+
+.blackfont{
+    color: black;
+}
+
+.addItem td {
+    padding-bottom:10px;
+}
+
+.addItem input {
+    width: 300px;
+    color:black;
+    border:2px solid #ccc;
+    height:30px;
+}
+
+.addItemForm {
+    margin-top: -40%;
+    color: white;
+}
+
+

@@ -159,6 +159,7 @@
     <Content Include="app\components\version\version_test.js" />
     <Content Include="app\controllers\homeCtrl.js" />
     <Content Include="app\controllers\indexCtrl.js" />
+    <Content Include="app\controllers\itemCtrl.js" />
     <Content Include="app\controllers\loginCtrl.js" />
     <Content Include="app\controllers\view3Ctrl.js" />
     <Content Include="app\css\creative.css" />
@@ -188,7 +189,6 @@
     <Content Include="app\index.html" />
     <Content Include="app\js\creative.js" />
     <Content Include="app\js\creative.min.js" />
-    <Content Include="app\services\collectionService.js" />
     <Content Include="app\vendor\bootstrap\css\bootstrap.css" />
     <Content Include="app\vendor\bootstrap\css\bootstrap.min.css" />
     <Content Include="app\vendor\bootstrap\fonts\glyphicons-halflings-regular.svg" />
@@ -205,6 +205,7 @@
     <Content Include="app\vendor\scrollreveal\scrollreveal.js" />
     <Content Include="app\vendor\scrollreveal\scrollreveal.min.js" />
     <Content Include="app\views\addCollection.html" />
+    <Content Include="app\views\addItem.html" />
     <Content Include="app\views\home.html" />
     <Content Include="app\views\loginForm.html" />
     <Content Include="app\views\view2.html" />
@@ -323,6 +324,9 @@
       <Project>{ecdb5dbe-000c-4d78-bb44-eb621b2f0e27}</Project>
       <Name>EchoCollection.WebApi</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="app\services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
