@@ -21,6 +21,10 @@
             .when('/addItem', {
                 templateUrl : 'views/addItem.html',
                 controller  : 'itemCtrl'
+            })
+            .when('/library', {
+                templateUrl: 'views/library.html',
+                controller: 'libraryCtrl'
             });
 
             

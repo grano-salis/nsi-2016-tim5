@@ -8,6 +8,7 @@ namespace EchoCollection.WebApi.Helpers
 {
     public static class Helper
     {
+        
         public static List<Collection> GetCollectionsMockUp()
         {
             List<Collection> collections = new List<Collection>();
@@ -15,14 +16,16 @@ namespace EchoCollection.WebApi.Helpers
             {
                 Title = "Arnela",
                 Description = "Prvi desc",
-                IsPrivate = false
+                IsPrivate = false,
+                Items = GetItemsMockUp()
             };
             collections.Add(col1);
             Collection col2 = new Collection()
             {
                 Title = "Almir",
                 Description = "Drugi desc",
-                IsPrivate = true
+                IsPrivate = true,
+                Items = GetItemsMockUp2()
             };
             collections.Add(col2);
             return collections;
@@ -34,6 +37,48 @@ namespace EchoCollection.WebApi.Helpers
             Item i1 = new Item()
             {
                 Title = "My Document",
+                DocumentType = "Image",
+                IsPrivate = false,
+                Metadata = new Models.Metadata()
+                {
+                    Abstract = "Long story short",
+                    Author = "Arnela Tumbul",
+                    Date = Convert.ToDateTime("11/10/2016"),
+                    Extra = "Addition",
+                    Language = "English",
+                    Publisher = "Sarajevo",
+                    Rights = "All rights",
+                    Url = "https://google.com"
+                }
+            };
+            Item i2 = new Item()
+            {
+                Title = "My Second Document",
+                DocumentType = "Image",
+                IsPrivate = false,
+                Metadata = new Models.Metadata()
+                {
+                    Abstract = "Long story short",
+                    Author = "Arnela Tumbul",
+                    Date = Convert.ToDateTime("11/10/2016"),
+                    Extra = "Addition",
+                    Language = "English",
+                    Publisher = "Sarajevo",
+                    Rights = "All rights",
+                    Url = "https://google.com"
+                }
+            };
+            itemsList.Add(i1);
+            itemsList.Add(i2);
+            return itemsList;
+        }
+
+        public static List<Item> GetItemsMockUp2()
+        {
+            List<Item> itemsList = new List<Item>();
+            Item i1 = new Item()
+            {
+                Title = "Almirko",
                 DocumentType = "Image",
                 IsPrivate = false,
                 Metadata = new Models.Metadata()

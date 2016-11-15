@@ -160,11 +160,14 @@
     <Content Include="app\controllers\homeCtrl.js" />
     <Content Include="app\controllers\indexCtrl.js" />
     <Content Include="app\controllers\itemCtrl.js" />
+    <Content Include="app\controllers\libraryCtrl.js" />
     <Content Include="app\controllers\loginCtrl.js" />
     <Content Include="app\controllers\view3Ctrl.js" />
     <Content Include="app\css\creative.css" />
     <Content Include="app\css\creative.min.css" />
     <Content Include="app\gulpfile.js" />
+    <Content Include="app\img\foldericons.png" />
+    <Content Include="app\img\free-vector-file-icon_101922_File_Icon.png" />
     <Content Include="app\img\header.jpg" />
     <Content Include="app\img\portfolio\fullsize\1.jpg" />
     <Content Include="app\img\portfolio\fullsize\2.jpg" />
@@ -207,6 +210,7 @@
     <Content Include="app\views\addCollection.html" />
     <Content Include="app\views\addItem.html" />
     <Content Include="app\views\home.html" />
+    <Content Include="app\views\library.html" />
     <Content Include="app\views\loginForm.html" />
     <Content Include="app\views\view2.html" />
     <Content Include="packages.config" />
@@ -306,6 +310,7 @@
     <Content Include="app\vendor\font-awesome\scss\_screen-reader.scss" />
     <Content Include="app\vendor\font-awesome\scss\_stacked.scss" />
     <Content Include="app\vendor\font-awesome\scss\_variables.scss" />
+    <Content Include="app\img\foldericons.psd" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -314,6 +319,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

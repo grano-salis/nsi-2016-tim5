@@ -1,0 +1,27 @@
+﻿
+<div class="css-treeview libraryForm col-lg-offset-1" ng-controller="libraryCtrl">
+        <ul>
+            <li ng-repeat="collection in collectionItemsList.data">
+                <input type="checkbox" id="item-0" /><label for="item-0">{{collection.Title}}</label>
+                <ul>
+                    <li ng-repeat="item in collection.Items">
+                        <input type="checkbox" id="item-0-0"/><label for="item-0-0">{{item.Title}}</label>                        
+                        <!--<ul>
+                            <li>
+                                <input type="checkbox" id="item-0-0-0" /><label for="item-0-0-0">Look Ma - No Hands!</label>
+                                <ul>
+                                    <li><a href="./">First Nested Item</a></li>
+                                    <li><a href="./">Second Nested Item</a></li>
+                                    <li><a href="./">Third Nested Item</a></li>
+                                    <li><a href="./">Fourth Nested Item</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="./">Item 1</a></li>
+                            <li><a href="./">Item 2</a></li>
+                            <li><a href="./">Item 3</a></li>
+                        </ul>-->
+                    </li>
+                </ul>
+            </li>
+        </ul>
+</div>
