@@ -341,6 +341,10 @@ header {
     color: #F05F40;
 }
 
+.text-primarywhite {
+    color: white;
+}
+
 .no-gutter > [class*='col-'] {
     padding-right: 0;
     padding-left: 0;
@@ -511,6 +515,10 @@ body {
     padding-bottom: 10px;
 }
 
+.addItemLibrary td {
+    padding-bottom: 10px;
+}
+
 .addItem input {
     width: 300px;
     color: black;
@@ -542,7 +550,7 @@ body {
 }
 
 .css-treeview {
-    font: normal 11px "Segoe UI", Arial, Sans-serif;
+    font: normal 15px "Segoe UI", Arial, Sans-serif;
     -moz-user-select: none;
     -webkit-user-select: none;
     user-select: none;
@@ -579,8 +587,13 @@ body {
         display: block;
     }
 
-    .css-treeview label,
+    /*.css-treeview label,*/
     .css-treeview label::before {
+        background: url("../img/foldericons.png") no-repeat;
+    }
+
+    .labelCollectionIcon
+    {
         background: url("../img/foldericons.png") no-repeat;
     }
 
@@ -590,7 +603,7 @@ body {
             display: inline-block;
             height: 16px;
             line-height: 16px;
-            , vertical-align: middle;
+            vertical-align: middle;
         }
 
     .css-treeview label {

@@ -28,6 +28,22 @@ namespace EchoCollection.WebApi.Helpers
                 Items = GetItemsMockUp2()
             };
             collections.Add(col2);
+            Collection col3 = new Collection()
+            {
+                Title = "Unfiled Items",
+                Description = "Items without specific collection",
+                IsPrivate = false,
+                Items = new List<Item>()
+            };
+            collections.Add(col3);
+            Collection col4 = new Collection()
+            {
+                Title = "Trash",
+                Description = "Deleted Items",
+                IsPrivate = true,
+                Items = new List<Item>()
+            };
+            collections.Add(col4);
             return collections;
         }
 

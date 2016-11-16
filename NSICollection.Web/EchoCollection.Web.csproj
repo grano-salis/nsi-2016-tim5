@@ -169,6 +169,7 @@
     <Content Include="app\img\foldericons.png" />
     <Content Include="app\img\free-vector-file-icon_101922_File_Icon.png" />
     <Content Include="app\img\header.jpg" />
+    <Content Include="app\img\itemicon.png" />
     <Content Include="app\img\portfolio\fullsize\1.jpg" />
     <Content Include="app\img\portfolio\fullsize\2.jpg" />
     <Content Include="app\img\portfolio\fullsize\3.jpg" />

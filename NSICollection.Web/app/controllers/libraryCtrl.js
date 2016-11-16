@@ -14,6 +14,28 @@ app.controller('libraryCtrl', function ($scope, $http, libraryService) {
         }
         $scope.collectionItemsList = data;
     });
+
+    $scope.showCollection = function (collection) {
+        $scope.showMetadataFlag = false;
+        $scope.showCollectionFlag = true;
+        $scope.collection = collection;
+    };
+    $scope.showMetadata = function (item) {
+        $scope.showCollectionFlag = false;
+        $scope.showMetadataFlag = true;
+        $scope.item = item;
+    };
+
+    $scope.saveCollection = function (collection) {
+        libraryService.AddCollection().then(function (response) {
+            console.log("Collection saved.");
+        });
+    }
+    $scope.saveItem = function (item) {
+        libraryService.AddItem(item).then(function (response) {
+            console.log("Item saved.")
+        });
+    }
 });
 
 // Move this into separate js
@@ -26,6 +48,21 @@ app.service('libraryService', function ($http) {
             method: 'GET'
         });
     };
+    fac.AddCollection = function (collection) {
+        return $http({
+            url: serviceBase + 'api/Collection/AddCollection',
+            method: 'POST',
+            data: JSON.stringify(collection)
+        });
+    };
+    fac.AddItem = function (item) {
+        return $http({
+            url: serviceBase + 'api/Item/AddItem',
+            method: 'POST',
+            data: JSON.stringify(item)
+        });
+    };
     return fac;
 
 });
+ 
