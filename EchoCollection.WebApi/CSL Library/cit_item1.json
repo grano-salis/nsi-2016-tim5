@@ -1,0 +1,29 @@
+CitationItems = [
+     {
+             "id":"1",
+             "type":"book",
+             "title":"My Document",
+			 "abstract":"Long story short",
+			 "author": [
+				 {
+						 "family": "Tumbul",
+						 "given": "Arnela",
+				 }
+			],
+			"issued": [
+				 {
+						 "date-parts": [ 2016, 10, 11 ]
+				 }
+			],
+			"language":"en",
+			"publisher":"Sarajevo",
+			"note":"Addition",
+			"rights":"All rights",
+			"URL":"https://google.com"
+     },
+     {
+             "id":"1",
+             "type":"book",
+             "title":"Book title"
+     }
+]
