@@ -263,6 +263,9 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="CSL Library\CiteProc.dll" />
+    <Content Include="CSL Library\Styles\apa-5th-edition.csl" />
+    <Content Include="CSL Library\Styles\elsevier-harvard.csl" />
+    <Content Include="CSL Library\Styles\ieee.csl" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -298,9 +301,11 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="CSL Library\Styles\apa-5th-edition.csl" />
-    <Content Include="CSL Library\Styles\elsevier-harvard.csl" />
     <Content Include="CSL Library\cit_item1.json" />
+    <Content Include="CSL Library\Styles\chicago-author-date.csl" />
+    <Content Include="CSL Library\Styles\ieee-internet-computing.csl" />
+    <Content Include="CSL Library\Styles\ieee-software.csl" />
+    <Content Include="CSL Library\Styles\modern-language-association.csl" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
