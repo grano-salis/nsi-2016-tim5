@@ -107,6 +107,7 @@
     <Content Include="app\components\version\version-directive_test.js" />
     <Content Include="app\components\version\version.js" />
     <Content Include="app\components\version\version_test.js" />
+    <Content Include="app\controllers\exportCtrl.js" />
     <Content Include="app\controllers\homeCtrl.js" />
     <Content Include="app\controllers\indexCtrl.js" />
     <Content Include="app\controllers\itemCtrl.js" />
@@ -160,6 +161,7 @@
     <Content Include="app\vendor\scrollreveal\scrollreveal.min.js" />
     <Content Include="app\views\addCollection.html" />
     <Content Include="app\views\addItem.html" />
+    <Content Include="app\views\exportItem.html" />
     <Content Include="app\views\home.html" />
     <Content Include="app\views\library.html" />
     <Content Include="app\views\loginForm.html" />

@@ -1,0 +1,55 @@
+﻿<div class="row" ng-controller="exportCtrl" style="margin-left: 20px;">
+    <div class="form-horizontal">
+        <div class="form-group">
+                <div class="col-md-6">
+                    Item Type:
+                    <input type="text" class="form-control" name="title" ng-model="item.currentType">
+                </div>
+            </div>
+        <div class="form-group">
+            <div class="col-md-6">
+                Author:
+                <input type="text" class="form-control" name="title" ng-model="item.metadata.author">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-6">
+                Abstract:
+                <input type="text" class="form-control" name="title" ng-model="item.metadata.abstract">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-6">
+                Publisher:
+                <input type="text" class="form-control" name="title" ng-model="item.metadata.publisher">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-6">
+                Language:
+                <input type="text" class="form-control" name="title" ng-model="item.metadata.language">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-6">
+                URL:
+                <input type="text" class="form-control" name="title" ng-model="item.metadata.url">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-6">
+                Issued:
+                <input type="text" class="form-control" name="title" ng-model="item.metadata.issued">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-6">
+                Extra:
+                <input type="text" class="form-control" name="title" ng-model="item.metadata.extra">
+            </div>
+        </div>
+        <div class="form-group">
+            <button onclick="exportItem();" type="button" class="btn btn-primary">Export to IEEE</button>
+        </div>
+    </div>
+</div>
