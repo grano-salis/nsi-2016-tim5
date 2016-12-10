@@ -309,7 +309,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="CSL Library\cit_item1.json" />
+    <Content Include="CSL Library\cit_items.json" />
     <Content Include="CSL Library\Styles\chicago-author-date.csl" />
     <Content Include="CSL Library\Styles\ieee-internet-computing.csl" />
     <Content Include="CSL Library\Styles\ieee-software.csl" />

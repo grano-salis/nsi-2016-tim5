@@ -12,6 +12,7 @@ namespace EchoCollection.WebApi.Controllers
     {
         [HttpGet]
         [AllowAnonymous]
+        [Route("api/citation/GetIEEECitationOfFirstItem")]
         public IHttpActionResult GetIEEECitationOfFirstItem()
         {
             string path = HttpContext.Current.Server.MapPath("~") + @"CSL Library\";
@@ -20,7 +21,7 @@ namespace EchoCollection.WebApi.Controllers
 
             var processor = CiteProc.Processor.Compile(style);
 
-            processor.DataProviders = CiteProc.Data.DataProvider.Load(path + "cit_item1.json", CiteProc.Data.DataFormat.Json);
+            processor.DataProviders = CiteProc.Data.DataProvider.Load(path + "cit_items.json", CiteProc.Data.DataFormat.Json);
 
             var entries = processor.GenerateBibliography();
 
@@ -29,6 +30,32 @@ namespace EchoCollection.WebApi.Controllers
             var html = entries.First().ToHtml();
 
             return Ok(plainText);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        [Route("api/citation/GetIEEECitations")]
+        public IHttpActionResult GetIEEECitations()
+        {
+            string path = HttpContext.Current.Server.MapPath("~") + @"CSL Library\";
+
+            var style = CiteProc.File.Load(path + @"Styles\ieee.csl");
+
+            var processor = CiteProc.Processor.Compile(style);
+
+            processor.DataProviders = CiteProc.Data.DataProvider.Load(path + "cit_items.json", CiteProc.Data.DataFormat.Json);
+
+            var entries = processor.GenerateBibliography();
+
+            string allEntries = "";
+
+            foreach (var entry in entries)
+            {
+                HtmlString htmlstring = new HtmlString(@"<br />");
+                allEntries += entry.ToHtml() + htmlstring.ToHtmlString();
+            }
+
+            return Ok(allEntries);
         }
     }
 }
