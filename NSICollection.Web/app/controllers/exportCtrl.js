@@ -27,6 +27,9 @@ function exportItem() {
         method: "GET",
         success: function (data, textStatus, jqXHR) {
             alert(data);
+        },
+        xhrFields: {
+            withCredentials: true
         }
     });
 }

@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Web.Http;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
+using System.Web.Http.Cors;
 
 namespace EchoCollection.WebApi
 {
@@ -25,6 +26,10 @@ namespace EchoCollection.WebApi
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            var corsOptions = new EnableCorsAttribute("http://localhost:57211", "*", "*");
+            corsOptions.SupportsCredentials = true;
+            config.EnableCors(corsOptions);
         }
     }
 }
