@@ -84,7 +84,6 @@ namespace EchoCollection.WebApi.Controllers
             return Ok(allEntries);
         }
 
-        [HttpGet]
         [AllowAnonymous]
         [Route("api/citation/GetCitations")]
         public IHttpActionResult GetCitations(int citStyleID)
