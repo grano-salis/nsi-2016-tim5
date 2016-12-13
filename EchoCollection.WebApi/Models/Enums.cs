@@ -11,4 +11,12 @@ namespace EchoCollection.WebApi.Models
         Book =  1,
         Image = 2
     }
+
+    public enum CitationStyleEnum
+    {
+        IEEE=1,
+        Harvard,
+        Chicago,
+        APA5thEd
+    }
 }
