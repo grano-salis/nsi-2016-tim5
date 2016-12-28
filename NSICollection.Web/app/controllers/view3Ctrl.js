@@ -9,11 +9,12 @@ app.controller('Ctrl3', function ($scope, $http, collectionService) {
         isprivate: false
     };
     collectionService.GetCollections().then(function (data) {
-        for (var i = 0; i < data.data.length; i++) {
+        var col = data.data.collections;
+        for (var i = 0; i < col.length; i++) {
             var obj = {
-                title: data.data[i].Title,
-                description: data.data[i].Description,
-                isprivate: data.data[i].IsPrivate
+                title:col[i].Title,
+                description:col[i].Description,
+                isprivate: col[i].IsPrivate
             }
             $scope.collectionList.push(obj);
         }
@@ -28,7 +29,7 @@ app.controller('Ctrl3', function ($scope, $http, collectionService) {
             isprivate: item.isprivate
         };
         collectionService.AddCollection(Collection).then(function (data) {
-            // TODO callback, handle success/error
+            console.log("succeeded");
         });
         $scope.clear();
     };

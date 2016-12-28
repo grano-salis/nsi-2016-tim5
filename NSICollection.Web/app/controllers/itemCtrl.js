@@ -47,7 +47,7 @@ app.controller('itemCtrl', function ($scope, $http, itemService) {
 
         itemService.AddItem(Item).then(function (data) {
             $scope.message = data.data;
-            // TODO callback, handle success/error
+            alert(data.data);
         });
     };   
 });

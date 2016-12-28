@@ -6,6 +6,11 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EchoCollection.Web", "NSICollection.Web\EchoCollection.Web.csproj", "{C22B5C16-CEB7-41F4-B6E4-6327396D1684}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EchoCollection.WebApi", "EchoCollection.WebApi\EchoCollection.WebApi.csproj", "{ECDB5DBE-000C-4D78-BB44-EB621B2F0E27}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2930B824-157F-4FD6-A96F-70158AD81EBB} = {2930B824-157F-4FD6-A96F-70158AD81EBB}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EchoService", "EchoService\EchoService.csproj", "{2930B824-157F-4FD6-A96F-70158AD81EBB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +26,10 @@ Global
 		{ECDB5DBE-000C-4D78-BB44-EB621B2F0E27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECDB5DBE-000C-4D78-BB44-EB621B2F0E27}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ECDB5DBE-000C-4D78-BB44-EB621B2F0E27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2930B824-157F-4FD6-A96F-70158AD81EBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2930B824-157F-4FD6-A96F-70158AD81EBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2930B824-157F-4FD6-A96F-70158AD81EBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2930B824-157F-4FD6-A96F-70158AD81EBB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

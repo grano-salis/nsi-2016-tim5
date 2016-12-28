@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="daf47934-364f-4b16-be30-f3c45de93d61" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:59137/EchoCollectionService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="EchoCollection.wsdl" MetadataType="Wsdl" ID="d47beffb-e544-4bec-8279-fdc9773515e3" SourceId="1" SourceUrl="http://localhost:59137/EchoCollectionService.svc?wsdl" />
+    <MetadataFile FileName="EchoCollectionService3.xsd" MetadataType="Schema" ID="faf5e043-7444-47ec-b1a2-976488961652" SourceId="1" SourceUrl="http://localhost:59137/EchoCollectionService.svc?xsd=xsd3" />
+    <MetadataFile FileName="EchoCollectionService2.xsd" MetadataType="Schema" ID="39b7d157-3453-4e26-96a2-ae5baab8761f" SourceId="1" SourceUrl="http://localhost:59137/EchoCollectionService.svc?xsd=xsd2" />
+    <MetadataFile FileName="EchoCollectionService1.xsd" MetadataType="Schema" ID="84070e05-7c60-4d76-bd74-d3c9800abb7d" SourceId="1" SourceUrl="http://localhost:59137/EchoCollectionService.svc?xsd=xsd1" />
+    <MetadataFile FileName="EchoCollectionService.xsd" MetadataType="Schema" ID="2c2e17cb-7604-44b5-975c-c9e021b3db92" SourceId="1" SourceUrl="http://localhost:59137/EchoCollectionService.svc?xsd=xsd0" />
+    <MetadataFile FileName="EchoCollectionService.disco" MetadataType="Disco" ID="ba8199f4-7401-4481-8fd2-4843648158c7" SourceId="1" SourceUrl="http://localhost:59137/EchoCollectionService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

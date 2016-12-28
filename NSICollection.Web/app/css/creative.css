@@ -531,6 +531,12 @@ body {
     color: white;
 }
 
+.exportItemForm
+{
+    margin-top: -40%;
+    color: white;
+}
+
 .libraryForm {
     margin-top: -40%;
     color: white;

@@ -28,12 +28,12 @@ app.controller('libraryCtrl', function ($scope, $http, libraryService) {
 
     $scope.saveCollection = function (collection) {
         libraryService.AddCollection().then(function (response) {
-            console.log("Collection saved.");
+            alert(response.data);
         });
     }
     $scope.saveItem = function (item) {
         libraryService.AddItem(item).then(function (response) {
-            console.log("Item saved.")
+            alert(response.data);
         });
     }
 });

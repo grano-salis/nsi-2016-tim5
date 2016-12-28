@@ -1,4 +1,5 @@
 ﻿using EchoCollection.Api.Models;
+using EchoCollection.WebApi.EchoServiceClient;
 using EchoCollection.WebApi.Helpers;
 
 using System;
@@ -16,7 +17,7 @@ namespace EchoCollection.WebApi.Controllers
         [HttpPost]
         [AllowAnonymous]
         [Route("AddItem")]
-        public string AddItem(Item item)
+        public string AddItem(Api.Models.Item item)
         {
             item.Metadata.Date = DateTime.Now;
             // Save To Database
