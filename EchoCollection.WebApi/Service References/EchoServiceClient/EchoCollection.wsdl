@@ -14,6 +14,12 @@
   <wsdl:message name="IEchoCollection_GetCollections_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetCollectionsResponse" />
   </wsdl:message>
+  <wsdl:message name="IEchoCollection_GetItems_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetItems" />
+  </wsdl:message>
+  <wsdl:message name="IEchoCollection_GetItems_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetItemsResponse" />
+  </wsdl:message>
   <wsdl:message name="IEchoCollection_SaveCollection_InputMessage">
     <wsdl:part name="parameters" element="tns:SaveCollection" />
   </wsdl:message>
@@ -37,6 +43,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IEchoCollection/GetCollections" message="tns:IEchoCollection_GetCollections_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IEchoCollection/GetCollectionsResponse" message="tns:IEchoCollection_GetCollections_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetItems">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEchoCollection/GetItems" message="tns:IEchoCollection_GetItems_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEchoCollection/GetItemsResponse" message="tns:IEchoCollection_GetItems_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="SaveCollection">
       <wsdl:input wsaw:Action="http://tempuri.org/IEchoCollection/SaveCollection" message="tns:IEchoCollection_SaveCollection_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IEchoCollection/SaveCollectionResponse" message="tns:IEchoCollection_SaveCollection_OutputMessage" />
@@ -54,6 +64,15 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetCollections">
       <soap:operation soapAction="http://tempuri.org/IEchoCollection/GetCollections" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItems">
+      <soap:operation soapAction="http://tempuri.org/IEchoCollection/GetItems" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

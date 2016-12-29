@@ -13,6 +13,9 @@ namespace EchoService.DataContracts
         public int ID { get; set; }
 
         [DataMember]
+        public int CollectionId { get; set; }
+
+        [DataMember]
         public string Title { get; set; }
 
         [DataMember]

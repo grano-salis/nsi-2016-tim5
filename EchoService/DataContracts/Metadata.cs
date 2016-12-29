@@ -13,6 +13,12 @@ namespace EchoService.DataContracts
         public int ID { get; set; }
 
         [DataMember]
+        public int ItemId { get; set; }
+
+        [DataMember]
+        public int DocumentTypeId { get; set; }
+
+        [DataMember]
         public string Author { get; set; }
 
         [DataMember]

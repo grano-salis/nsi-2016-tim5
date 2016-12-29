@@ -18,6 +18,9 @@ namespace EchoService
         GetCollectionsResponse GetCollections();
 
         [OperationContract]
+        GetItemsResponse GetItems();
+
+        [OperationContract]
         AddCollectionResponse SaveCollection(AddCollectionRequest request);
 
         [OperationContract]

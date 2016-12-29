@@ -49,9 +49,14 @@ namespace EchoCollection.WebApi.Controllers
         [HttpGet]
         [AllowAnonymous]
         [Route("GetItems")]
-        public IHttpActionResult GetItems()
-        {        
-            return Ok(Helper.GetItemsMockUp());
+        public GetItemsResponse GetItems()
+        {
+            GetItemsResponse response = new GetItemsResponse();
+            using (var client = new EchoCollectionClient())
+            {
+                response = client.GetItems();
+            }
+            return response;
         }
     }
 }

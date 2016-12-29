@@ -7,9 +7,9 @@ using System.Web;
 namespace EchoService.DataContracts
 {
     [DataContract]
-    public class GetItemsResponse
+    public class GetItemsResponse : Response
     {
         [DataMember]
-        List<Item> items { get; set; }
+        public List<Item> Items { get; set; }
     }
 }

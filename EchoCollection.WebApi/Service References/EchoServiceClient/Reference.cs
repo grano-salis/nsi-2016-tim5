@@ -21,6 +21,12 @@ namespace EchoCollection.WebApi.EchoServiceClient {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEchoCollection/GetCollections", ReplyAction="http://tempuri.org/IEchoCollection/GetCollectionsResponse")]
         System.Threading.Tasks.Task<EchoService.DataContracts.GetCollectionsResponse> GetCollectionsAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEchoCollection/GetItems", ReplyAction="http://tempuri.org/IEchoCollection/GetItemsResponse")]
+        EchoService.DataContracts.GetItemsResponse GetItems();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEchoCollection/GetItems", ReplyAction="http://tempuri.org/IEchoCollection/GetItemsResponse")]
+        System.Threading.Tasks.Task<EchoService.DataContracts.GetItemsResponse> GetItemsAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEchoCollection/SaveCollection", ReplyAction="http://tempuri.org/IEchoCollection/SaveCollectionResponse")]
         EchoService.DataContracts.AddCollectionResponse SaveCollection(EchoService.DataContracts.AddCollectionRequest request);
         
@@ -73,6 +79,14 @@ namespace EchoCollection.WebApi.EchoServiceClient {
         
         public System.Threading.Tasks.Task<EchoService.DataContracts.GetCollectionsResponse> GetCollectionsAsync() {
             return base.Channel.GetCollectionsAsync();
+        }
+        
+        public EchoService.DataContracts.GetItemsResponse GetItems() {
+            return base.Channel.GetItems();
+        }
+        
+        public System.Threading.Tasks.Task<EchoService.DataContracts.GetItemsResponse> GetItemsAsync() {
+            return base.Channel.GetItemsAsync();
         }
         
         public EchoService.DataContracts.AddCollectionResponse SaveCollection(EchoService.DataContracts.AddCollectionRequest request) {

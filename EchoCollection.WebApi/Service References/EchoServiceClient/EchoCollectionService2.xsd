@@ -48,6 +48,7 @@
   <xs:element name="ArrayOfItem" nillable="true" type="tns:ArrayOfItem" />
   <xs:complexType name="Item">
     <xs:sequence>
+      <xs:element minOccurs="0" name="CollectionId" type="xs:int" />
       <xs:element minOccurs="0" name="DocumentTypeId" type="xs:int" />
       <xs:element minOccurs="0" name="ID" type="xs:int" />
       <xs:element minOccurs="0" name="IsPrivate" type="xs:boolean" />
@@ -70,6 +71,16 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Metadata" nillable="true" type="tns:Metadata" />
+  <xs:complexType name="GetItemsResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Response">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Items" nillable="true" type="tns:ArrayOfItem" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetItemsResponse" nillable="true" type="tns:GetItemsResponse" />
   <xs:complexType name="AddCollectionRequest">
     <xs:sequence>
       <xs:element minOccurs="0" name="Collection" nillable="true" type="tns:Collection" />

@@ -18,16 +18,13 @@ namespace EchoService
     {
         public GetCollectionsResponse GetCollections()
         {
-            string oradb = "Data Source=(DESCRIPTION="
-                      + "(ADDRESS_LIST=(ADDRESS=(PROTOCOL = TCP)(HOST=80.65.65.66)(PORT=1521)))"
-                      + "(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME= etflab.db.lab.etf.unsa.ba)));"
-                      + "User Id=nsi09;Password=wWx09!";
+            string oradb = System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             OracleConnection conn = new OracleConnection(oradb);
 
             conn.Open();
             OracleCommand cmd = new OracleCommand();
             cmd.Connection = conn;
-            cmd.CommandText = "select * from collection";
+            cmd.CommandText = "select distinct * from collection";
             cmd.CommandType = CommandType.Text;
             OracleDataReader dr = cmd.ExecuteReader();
             GetCollectionsResponse response = new GetCollectionsResponse();
@@ -44,21 +41,84 @@ namespace EchoService
                     response.Message = "Could not get Collections or the list is empty";
                     return response;
                 }
-
                 Collection collection = new Collection
                 {
                     ID = id,
                     Title = dr[1].ToString(),
                     Description = dr[2].ToString(),
-                    IsPrivate = isPrivate//,
-                                         //  Items 
+                    IsPrivate = isPrivate,
+                    Items = new List<Item>()                             //  Items 
                 };
 
                 collections.Add(collection);
             }
+            conn.Close();
+            OracleConnection conn2 = new OracleConnection(oradb);
+
+            conn2.Open();
+            cmd.Connection = conn2;
+
+            cmd.CommandText = "select * from metadata";
+            List<Metadata> metaList = new List<Metadata>();
+            OracleDataReader drMetadata = cmd.ExecuteReader();
+            while (drMetadata.HasRows && drMetadata.Read())
+            {
+                //(id, itemid, documenttypeid, author,abstract, publisher, language,url, rights,datepublished,extra)
+                int id, itemId, documentTypeId;
+                Int32.TryParse(drMetadata[0].ToString(), out id);
+                Int32.TryParse(drMetadata[1].ToString(), out itemId);
+                Int32.TryParse(drMetadata[2].ToString(), out documentTypeId);
+                Metadata metaData = new Metadata()
+                {
+                    ID = id,
+                    ItemId = itemId,
+                    DocumentTypeId = documentTypeId,
+                    Author = drMetadata[3].ToString(),
+                    Abstract = drMetadata[4].ToString(),
+                    Publisher = drMetadata[5].ToString(),
+                    Language = drMetadata[6].ToString(),
+                    Url = drMetadata[7].ToString(),
+                    Rights = drMetadata[8].ToString(),
+                    Date = Convert.ToDateTime(drMetadata[9]),
+                    Extra = drMetadata[10].ToString()
+                };
+                metaList.Add(metaData);
+            }
+
+            cmd.CommandText = "select distinct * from item";
+
+            OracleDataReader drItems = cmd.ExecuteReader();
+            List<Item> items = new List<Item>();
+            while (drItems.HasRows && drItems.Read())
+            {
+                int id, collectionId, documentTypeId;
+                bool isPrivate;
+                Int32.TryParse(drItems[0].ToString(), out id);
+                Int32.TryParse(drItems[1].ToString(), out collectionId);
+                Int32.TryParse(drItems[2].ToString(), out documentTypeId);
+                bool.TryParse(drItems[3].ToString(), out isPrivate);
+                Item item = new Item
+                {
+                    ID = id,
+                    CollectionId = collectionId,
+                    DocumentTypeId = documentTypeId,
+                    IsPrivate = isPrivate,
+                    Title = drItems[4].ToString(),
+                    Metadata = metaList.FirstOrDefault(x => x.ItemId == id)
+                };
+                items.Add(item);
+            }
+
+            foreach (var collection in collections)
+            {
+
+                var itemsList = items.Where(x => x.CollectionId == collection.ID).ToList();
+                if (itemsList.Count > 0)
+                    collection.Items.AddRange(itemsList);
+            }
             response.collections = collections;
 
-            conn.Dispose();
+            conn2.Dispose();
             return response;
         }
 
@@ -109,10 +169,10 @@ namespace EchoService
             cmd.Connection = conn;
             string query1 = "select item_seq.nextval from dual";
             cmd.CommandText = query1;
-            var  rd = cmd.ExecuteScalar();
-            
-            
-            string query2 = "insert into item (id, collectionid, documenttypeid, isprivate, title, createdby, datecreated, modifiedby, datemodified, isdeleted) values('"+ rd + "','19','"
+            var rd = cmd.ExecuteScalar();
+
+
+            string query2 = "insert into item (id, collectionid, documenttypeid, isprivate, title, createdby, datecreated, modifiedby, datemodified, isdeleted) values('" + rd + "','19','"
                 + request.Item.DocumentTypeId.ToString() + "','" + Convert.ToInt32(request.Item.IsPrivate).ToString()
                 + "','" + request.Item.Title + "','1', sysdate, '1', sysdate, '0')";
             cmd.CommandText = query2;
@@ -122,17 +182,64 @@ namespace EchoService
             OracleConnection conn2 = new OracleConnection(oradb);
             conn2.Open();
             cmd.Connection = conn2;
-            string query3 = "insert into metadata (id, itemid, documenttypeid, author,abstract, publisher, language,url, rights,datepublished,extra) values(metadata_seq.NEXTVAL, '" + rd + "','" 
+            string query3 = "insert into metadata (id, itemid, documenttypeid, author,abstract, publisher, language,url, rights,datepublished,extra) values(metadata_seq.NEXTVAL, '" + rd + "','"
                + request.Item.DocumentTypeId.ToString() + "','" + request.Item.Metadata.Author + "','" + request.Item.Metadata.Abstract + "','" + request.Item.Metadata.Publisher + "','"
                + request.Item.Metadata.Language + "','" + request.Item.Metadata.Url + "','" + request.Item.Metadata.Rights + "', sysdate,'" + request.Item.Metadata.Extra + "')";
             cmd.CommandText = query3;
-          
+
             OracleDataReader dr2 = cmd.ExecuteReader();
             conn2.Close();
             return new AddItemResponse
             {
                 ResponseType = ResponseType.Succeeded
             };
+        }
+
+        public GetItemsResponse GetItems()
+        {
+            string oradb = System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            OracleConnection conn = new OracleConnection(oradb);
+
+            conn.Open();
+            OracleCommand cmd = new OracleCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = "select * from item";
+            cmd.CommandType = CommandType.Text;
+            OracleDataReader dr = cmd.ExecuteReader();
+            GetItemsResponse response = new GetItemsResponse();
+            List<Item> items  = new List<Item>();
+
+            //insert into item(id, collectionid, documenttypeid, isprivate,title,createdby,datecreated,modifiedby,datemodified,isdeleted)
+            while (dr.HasRows && dr.Read())
+            {
+                int id = 0, collectionId, documentTypeId;
+                bool isPrivate;
+                Int32.TryParse(dr[0].ToString(), out id);
+                Int32.TryParse(dr[1].ToString(), out collectionId);
+                Int32.TryParse(dr[2].ToString(), out documentTypeId);
+                bool.TryParse(dr[3].ToString(), out isPrivate);
+
+                if (id == 0)
+                {
+                    response.ResponseType = ResponseType.Failed;
+                    response.Message = "Could not get Items or the list is empty";
+                    return response;
+                }
+
+                Item item = new Item
+                {
+                    ID = id,
+                    CollectionId = collectionId,
+                    DocumentTypeId = documentTypeId,
+                    IsPrivate = isPrivate,
+                    Title = dr[4].ToString(),
+                };
+
+                items.Add(item);
+            }
+            response.Items = items;
+            conn.Dispose();
+            return response;
         }
 
         public CompositeType GetDataUsingDataContract(CompositeType composite)
@@ -147,5 +254,7 @@ namespace EchoService
             }
             return composite;
         }
+
+
     }
 }
