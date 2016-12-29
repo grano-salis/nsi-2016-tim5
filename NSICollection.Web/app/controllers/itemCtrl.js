@@ -63,12 +63,6 @@ app.service('itemService', function ($http) {
             data: JSON.stringify(Item)
         });
     };
-    //fac.GetItems= function (collection) {
-    //    return $http({
-    //        url: serviceBase + 'api/Collection/GetCollections',
-    //        method: 'GET'
-    //    });
-    //};
     return fac;
 
 });

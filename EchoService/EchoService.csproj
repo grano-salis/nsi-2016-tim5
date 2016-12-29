@@ -96,6 +96,8 @@
   <ItemGroup>
     <Compile Include="DataContracts\AddCollectionRequest.cs" />
     <Compile Include="DataContracts\AddCollectionResponse.cs" />
+    <Compile Include="DataContracts\AddItemRequest.cs" />
+    <Compile Include="DataContracts\AddItemResponse.cs" />
     <Compile Include="DataContracts\Collection.cs" />
     <Compile Include="DataContracts\GetCollectionsResponse.cs" />
     <Compile Include="DataContracts\GetItemsResponse.cs" />

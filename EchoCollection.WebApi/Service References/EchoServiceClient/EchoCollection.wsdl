@@ -20,6 +20,12 @@
   <wsdl:message name="IEchoCollection_SaveCollection_OutputMessage">
     <wsdl:part name="parameters" element="tns:SaveCollectionResponse" />
   </wsdl:message>
+  <wsdl:message name="IEchoCollection_SaveItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveItem" />
+  </wsdl:message>
+  <wsdl:message name="IEchoCollection_SaveItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveItemResponse" />
+  </wsdl:message>
   <wsdl:message name="IEchoCollection_GetDataUsingDataContract_InputMessage">
     <wsdl:part name="parameters" element="tns:GetDataUsingDataContract" />
   </wsdl:message>
@@ -34,6 +40,10 @@
     <wsdl:operation name="SaveCollection">
       <wsdl:input wsaw:Action="http://tempuri.org/IEchoCollection/SaveCollection" message="tns:IEchoCollection_SaveCollection_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IEchoCollection/SaveCollectionResponse" message="tns:IEchoCollection_SaveCollection_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveItem">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEchoCollection/SaveItem" message="tns:IEchoCollection_SaveItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEchoCollection/SaveItemResponse" message="tns:IEchoCollection_SaveItem_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetDataUsingDataContract">
       <wsdl:input wsaw:Action="http://tempuri.org/IEchoCollection/GetDataUsingDataContract" message="tns:IEchoCollection_GetDataUsingDataContract_InputMessage" />
@@ -53,6 +63,15 @@
     </wsdl:operation>
     <wsdl:operation name="SaveCollection">
       <soap:operation soapAction="http://tempuri.org/IEchoCollection/SaveCollection" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveItem">
+      <soap:operation soapAction="http://tempuri.org/IEchoCollection/SaveItem" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

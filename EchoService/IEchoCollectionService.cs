@@ -21,6 +21,9 @@ namespace EchoService
         AddCollectionResponse SaveCollection(AddCollectionRequest request);
 
         [OperationContract]
+        AddItemResponse SaveItem(AddItemRequest request);
+
+        [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);
 
         // TODO: Add your service operations here

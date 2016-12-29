@@ -27,6 +27,12 @@ namespace EchoCollection.WebApi.EchoServiceClient {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEchoCollection/SaveCollection", ReplyAction="http://tempuri.org/IEchoCollection/SaveCollectionResponse")]
         System.Threading.Tasks.Task<EchoService.DataContracts.AddCollectionResponse> SaveCollectionAsync(EchoService.DataContracts.AddCollectionRequest request);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEchoCollection/SaveItem", ReplyAction="http://tempuri.org/IEchoCollection/SaveItemResponse")]
+        EchoService.DataContracts.AddItemResponse SaveItem(EchoService.DataContracts.AddItemRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEchoCollection/SaveItem", ReplyAction="http://tempuri.org/IEchoCollection/SaveItemResponse")]
+        System.Threading.Tasks.Task<EchoService.DataContracts.AddItemResponse> SaveItemAsync(EchoService.DataContracts.AddItemRequest request);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEchoCollection/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IEchoCollection/GetDataUsingDataContractResponse")]
         EchoService.CompositeType GetDataUsingDataContract(EchoService.CompositeType composite);
         
@@ -75,6 +81,14 @@ namespace EchoCollection.WebApi.EchoServiceClient {
         
         public System.Threading.Tasks.Task<EchoService.DataContracts.AddCollectionResponse> SaveCollectionAsync(EchoService.DataContracts.AddCollectionRequest request) {
             return base.Channel.SaveCollectionAsync(request);
+        }
+        
+        public EchoService.DataContracts.AddItemResponse SaveItem(EchoService.DataContracts.AddItemRequest request) {
+            return base.Channel.SaveItem(request);
+        }
+        
+        public System.Threading.Tasks.Task<EchoService.DataContracts.AddItemResponse> SaveItemAsync(EchoService.DataContracts.AddItemRequest request) {
+            return base.Channel.SaveItemAsync(request);
         }
         
         public EchoService.CompositeType GetDataUsingDataContract(EchoService.CompositeType composite) {

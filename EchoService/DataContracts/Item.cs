@@ -16,7 +16,7 @@ namespace EchoService.DataContracts
         public string Title { get; set; }
 
         [DataMember]
-        public string DocumentType { get; set; }
+        public int DocumentTypeId { get; set; }
 
         [DataMember]
         public bool IsPrivate { get; set; }
