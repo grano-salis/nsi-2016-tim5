@@ -242,19 +242,33 @@ namespace EchoService
             return response;
         }
 
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
+        public GetDocumentTypeResponse GetDocTypes()
         {
-            if (composite == null)
+            string oradb = System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            OracleConnection conn = new OracleConnection(oradb);
+
+            conn.Open();
+            OracleCommand cmd = new OracleCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = "select * from documenttype";
+            cmd.CommandType = CommandType.Text;
+            OracleDataReader dr = cmd.ExecuteReader();
+            GetDocumentTypeResponse response = new GetDocumentTypeResponse();
+            response.DocumentTypes = new List<DocumentType>();
+            while(dr.HasRows && dr.Read())
             {
-                throw new ArgumentNullException("composite");
+                int id;
+                Int32.TryParse(dr[0].ToString(), out id);
+                DocumentType docType = new DocumentType
+                {
+                    ID = id,
+                    DocumentTypeTitle = dr[1].ToString()
+                };
+
+                response.DocumentTypes.Add(docType);
             }
-            if (composite.BoolValue)
-            {
-                composite.StringValue += "Suffix";
-            }
-            return composite;
+            conn.Dispose();
+            return response;
         }
-
-
     }
 }

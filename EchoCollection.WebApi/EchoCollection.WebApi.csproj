@@ -295,6 +295,7 @@
     <Content Include="Properties\DataSources\EchoService.DataContracts.AddCollectionResponse.datasource" />
     <Content Include="Properties\DataSources\EchoService.DataContracts.AddItemResponse.datasource" />
     <Content Include="Properties\DataSources\EchoService.DataContracts.GetItemsResponse.datasource" />
+    <Content Include="Properties\DataSources\EchoService.DataContracts.GetDocumentTypeResponse.datasource" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
@@ -314,9 +315,6 @@
     <None Include="Service References\EchoServiceClient\EchoCollectionService.disco" />
     <None Include="Service References\EchoServiceClient\configuration91.svcinfo" />
     <None Include="Service References\EchoServiceClient\configuration.svcinfo" />
-    <None Include="Service References\EchoServiceClient\EchoCollectionService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\EchoServiceClient\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>

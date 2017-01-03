@@ -53,7 +53,7 @@ namespace EchoCollection.WebApi.Helpers
             Item i1 = new Item()
             {
                 Title = "My Document",
-                DocumentType = "Image",
+                DocumentType = new EchoService.DataContracts.DocumentType(),
                 IsPrivate = false,
                 Metadata = new Models.Metadata()
                 {
@@ -70,7 +70,7 @@ namespace EchoCollection.WebApi.Helpers
             Item i2 = new Item()
             {
                 Title = "My Second Document",
-                DocumentType = "Image",
+                DocumentType = new EchoService.DataContracts.DocumentType(),
                 IsPrivate = false,
                 Metadata = new Models.Metadata()
                 {
@@ -95,7 +95,7 @@ namespace EchoCollection.WebApi.Helpers
             Item i1 = new Item()
             {
                 Title = "Almirko",
-                DocumentType = "Image",
+                DocumentType = new EchoService.DataContracts.DocumentType(),
                 IsPrivate = false,
                 Metadata = new Models.Metadata()
                 {

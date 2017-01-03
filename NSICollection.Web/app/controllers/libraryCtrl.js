@@ -4,11 +4,11 @@ var app = angular.module('echo');
 app.controller('libraryCtrl', function ($scope, $http, libraryService) {
 
     libraryService.GetCollectionItems().then(function (data) {
-        for (var i = 0; i < data.data.length; i++) {
+        for (var i = 0; i < data.data.collections.length; i++) {
             var obj = {
-                title: data.data[i].Title,
-                description: data.data[i].Description,
-                isprivate: data.data[i].IsPrivate,
+                title: data.data.collections[i].Title,
+                description: data.data.collections[i].Description,
+                isprivate: data.data.collections[i].IsPrivate
 
             }
         }

@@ -62,8 +62,10 @@
       <xs:element minOccurs="0" name="Abstract" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Author" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DocumentTypeId" type="xs:int" />
       <xs:element minOccurs="0" name="Extra" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="ItemId" type="xs:int" />
       <xs:element minOccurs="0" name="Language" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Publisher" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Rights" nillable="true" type="xs:string" />
@@ -111,4 +113,23 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="AddItemResponse" nillable="true" type="tns:AddItemResponse" />
+  <xs:complexType name="GetDocumentTypeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DocumentTypes" nillable="true" type="tns:ArrayOfDocumentType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetDocumentTypeResponse" nillable="true" type="tns:GetDocumentTypeResponse" />
+  <xs:complexType name="ArrayOfDocumentType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DocumentType" nillable="true" type="tns:DocumentType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDocumentType" nillable="true" type="tns:ArrayOfDocumentType" />
+  <xs:complexType name="DocumentType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DocumentTypeTitle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DocumentType" nillable="true" type="tns:DocumentType" />
 </xs:schema>

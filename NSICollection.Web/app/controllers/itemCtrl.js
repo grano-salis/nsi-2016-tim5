@@ -1,7 +1,7 @@
 ﻿'use strict';
 var app = angular.module('echo');
 
-app.controller('itemCtrl', function ($scope, $http, itemService) {
+app.controller('itemCtrl', function ($scope, $http, $filter, itemService) {
     $scope.itemList = [];
     $scope.message = "";
     $scope.item = {
@@ -19,20 +19,28 @@ app.controller('itemCtrl', function ($scope, $http, itemService) {
         }
     };
     
+    itemService.GetDocTypes().then(function (response) {
+        for (var i = 0; i < response.data.DocumentTypes.length; i++) {
+            var obj = {
+                id: response.data.DocumentTypes[i].ID,
+                docTypeTitle: response.data.DocumentTypes[i].DocumentTypeTitle
+            }
+        }
+        $scope.itemTypes = response.data.DocumentTypes;
+    });
 
-    $scope.itemTypes =
-    [
-        "Document",
-        "Image",
-        "Audio",
-        "Book"
-    ];
+    $scope.change = function (id) {
+        var newTemp = $filter("filter")($scope.itemTypes, { ID: id });
 
+        $scope.item.currentType = newTemp[0].DocumentTypeTitle;
+    };
   
     $scope.addItem = function (item) {
         var Item = {
             title: item.title,
-            documentType: item.currentType,
+            documentType: {
+                id: item.documenttypeid
+            },
             isprivate: item.isprivate
             ,metadata: {
                 author: item.metadata.author,
@@ -63,6 +71,14 @@ app.service('itemService', function ($http) {
             data: JSON.stringify(Item)
         });
     };
+
+    fac.GetDocTypes = function () {
+        return $http({
+            url: serviceBase + 'api/Item/GetDocTypes',
+            method: 'GET'
+        });
+    };
+
     return fac;
 
 });

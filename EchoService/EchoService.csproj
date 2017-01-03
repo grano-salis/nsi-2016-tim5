@@ -101,7 +101,9 @@
     <Compile Include="DataContracts\AddItemRequest.cs" />
     <Compile Include="DataContracts\AddItemResponse.cs" />
     <Compile Include="DataContracts\Collection.cs" />
+    <Compile Include="DataContracts\DocumentType.cs" />
     <Compile Include="DataContracts\GetCollectionsResponse.cs" />
+    <Compile Include="DataContracts\GetDocumentTypeResponse.cs" />
     <Compile Include="DataContracts\GetItemsResponse.cs" />
     <Compile Include="DataContracts\Item.cs" />
     <Compile Include="DataContracts\Metadata.cs" />

@@ -5,7 +5,6 @@
       <xsd:import schemaLocation="http://localhost:59137/EchoCollectionService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:59137/EchoCollectionService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:59137/EchoCollectionService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/EchoService.DataContracts" />
-      <xsd:import schemaLocation="http://localhost:59137/EchoCollectionService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/EchoService" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IEchoCollection_GetCollections_InputMessage">
@@ -32,11 +31,11 @@
   <wsdl:message name="IEchoCollection_SaveItem_OutputMessage">
     <wsdl:part name="parameters" element="tns:SaveItemResponse" />
   </wsdl:message>
-  <wsdl:message name="IEchoCollection_GetDataUsingDataContract_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetDataUsingDataContract" />
+  <wsdl:message name="IEchoCollection_GetDocTypes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocTypes" />
   </wsdl:message>
-  <wsdl:message name="IEchoCollection_GetDataUsingDataContract_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetDataUsingDataContractResponse" />
+  <wsdl:message name="IEchoCollection_GetDocTypes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocTypesResponse" />
   </wsdl:message>
   <wsdl:portType name="IEchoCollection">
     <wsdl:operation name="GetCollections">
@@ -55,9 +54,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IEchoCollection/SaveItem" message="tns:IEchoCollection_SaveItem_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IEchoCollection/SaveItemResponse" message="tns:IEchoCollection_SaveItem_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetDataUsingDataContract">
-      <wsdl:input wsaw:Action="http://tempuri.org/IEchoCollection/GetDataUsingDataContract" message="tns:IEchoCollection_GetDataUsingDataContract_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IEchoCollection/GetDataUsingDataContractResponse" message="tns:IEchoCollection_GetDataUsingDataContract_OutputMessage" />
+    <wsdl:operation name="GetDocTypes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEchoCollection/GetDocTypes" message="tns:IEchoCollection_GetDocTypes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEchoCollection/GetDocTypesResponse" message="tns:IEchoCollection_GetDocTypes_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IEchoCollection" type="tns:IEchoCollection">
@@ -98,8 +97,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetDataUsingDataContract">
-      <soap:operation soapAction="http://tempuri.org/IEchoCollection/GetDataUsingDataContract" style="document" />
+    <wsdl:operation name="GetDocTypes">
+      <soap:operation soapAction="http://tempuri.org/IEchoCollection/GetDocTypes" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

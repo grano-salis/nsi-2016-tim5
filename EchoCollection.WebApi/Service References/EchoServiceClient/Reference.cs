@@ -39,11 +39,11 @@ namespace EchoCollection.WebApi.EchoServiceClient {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEchoCollection/SaveItem", ReplyAction="http://tempuri.org/IEchoCollection/SaveItemResponse")]
         System.Threading.Tasks.Task<EchoService.DataContracts.AddItemResponse> SaveItemAsync(EchoService.DataContracts.AddItemRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEchoCollection/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IEchoCollection/GetDataUsingDataContractResponse")]
-        EchoService.CompositeType GetDataUsingDataContract(EchoService.CompositeType composite);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEchoCollection/GetDocTypes", ReplyAction="http://tempuri.org/IEchoCollection/GetDocTypesResponse")]
+        EchoService.DataContracts.GetDocumentTypeResponse GetDocTypes();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEchoCollection/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IEchoCollection/GetDataUsingDataContractResponse")]
-        System.Threading.Tasks.Task<EchoService.CompositeType> GetDataUsingDataContractAsync(EchoService.CompositeType composite);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEchoCollection/GetDocTypes", ReplyAction="http://tempuri.org/IEchoCollection/GetDocTypesResponse")]
+        System.Threading.Tasks.Task<EchoService.DataContracts.GetDocumentTypeResponse> GetDocTypesAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -105,12 +105,12 @@ namespace EchoCollection.WebApi.EchoServiceClient {
             return base.Channel.SaveItemAsync(request);
         }
         
-        public EchoService.CompositeType GetDataUsingDataContract(EchoService.CompositeType composite) {
-            return base.Channel.GetDataUsingDataContract(composite);
+        public EchoService.DataContracts.GetDocumentTypeResponse GetDocTypes() {
+            return base.Channel.GetDocTypes();
         }
         
-        public System.Threading.Tasks.Task<EchoService.CompositeType> GetDataUsingDataContractAsync(EchoService.CompositeType composite) {
-            return base.Channel.GetDataUsingDataContractAsync(composite);
+        public System.Threading.Tasks.Task<EchoService.DataContracts.GetDocumentTypeResponse> GetDocTypesAsync() {
+            return base.Channel.GetDocTypesAsync();
         }
     }
 }

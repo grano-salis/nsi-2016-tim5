@@ -1,4 +1,6 @@
-﻿using EchoCollection.WebApi.Helpers;
+﻿using EchoCollection.WebApi.EchoServiceClient;
+using EchoCollection.WebApi.Helpers;
+using EchoService.DataContracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +16,14 @@ namespace EchoCollection.WebApi.Controllers
         [HttpGet]
         [AllowAnonymous]
         [Route("GetCollectionItems")]
-        public IHttpActionResult GetCollectionItems()
+        public GetCollectionsResponse GetCollectionItems()
         {
-            return Ok(Helper.GetCollectionsMockUp());
+            GetCollectionsResponse response = new GetCollectionsResponse();
+            using (EchoCollectionClient client = new EchoCollectionClient())
+            {
+                response = client.GetCollections();
+            }
+            return response;
         }
     }
 }

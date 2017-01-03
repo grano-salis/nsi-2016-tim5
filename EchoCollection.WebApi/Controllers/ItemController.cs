@@ -23,7 +23,7 @@ namespace EchoCollection.WebApi.Controllers
             AddItemRequest request = new AddItemRequest();
             request.Item = new EchoService.DataContracts.Item
             {
-                DocumentTypeId = 2,
+                DocumentTypeId = item.DocumentType.ID,
                 IsPrivate = item.IsPrivate,
                 Title = item.Title,
                 Metadata = new Metadata
@@ -55,6 +55,19 @@ namespace EchoCollection.WebApi.Controllers
             using (var client = new EchoCollectionClient())
             {
                 response = client.GetItems();
+            }
+            return response;
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        [Route("GetDocTypes")]
+        public GetDocumentTypeResponse GetDocTypes()
+        {
+            GetDocumentTypeResponse response = new GetDocumentTypeResponse();
+            using (var client = new EchoCollectionClient())
+            {
+                response = client.GetDocTypes();
             }
             return response;
         }
