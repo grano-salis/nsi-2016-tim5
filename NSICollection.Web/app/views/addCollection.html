@@ -2,15 +2,18 @@
 <div class="row addCollectionForm" ng-controller="Ctrl3">
     <div class="col-md-7">
 
-        <form class="form-horizontal">
+        <form name="myForm2" class="form-horizontal" novalidate>
             <h4 class="col-md-offset-4">Create your own collection</h4>
             <hr />
             <div class="form-group">
                 <div class="col-md-offset-1">
                     <span class="col-md-2 control-label"><strong>Title</strong></span>
                 </div>
-                <div class="col-md-6">
-                    <input type="text" name="title" class="form-control" ng-model="collection.title">
+                <div class="col-md-6" ng-class="{ 'has-error' : myForm.title.$invalid && !myForm.title.$pristine && myForm.title.$dirty}">
+                    <input type="text" name="title" class="form-control" ng-model="collection.title" ng-minlength="3" ng-maxlength="15" required>
+                    <p ng-show="myForm2.title.$invalid && !myForm2.title.$pristine && myForm2.title.$touched && !myForm2.title.$error.minlength" class="help-block">Title is required.</p>
+                    <p ng-show="myForm2.title.$error.minlength && myForm2.title.$touched" class="help-block">Title is too short.</p>
+                    <p ng-show="myForm2.title.$error.maxlength && myForm2.title.$touched" class="help-block">Title is too long.</p>
                 </div>
             </div>
 
@@ -18,8 +21,10 @@
                 <div class="col-md-offset-1">
                     <span class="col-md-2 control-label"><strong>Description</strong></span>
                 </div>
-                <div class="col-md-6">
-                    <textarea rows="3" cols="50" class="form-control" ng-model="collection.description"></textarea>
+                <div class="col-md-6" ng-class="{ 'has-error' : myForm.description.$invalid && !myForm.description.$pristine && myForm.description.$dirty}">
+                    <textarea name="description" rows="3" cols="50" class="form-control" ng-model="collection.description" ng-maxlength="50" required></textarea>
+                    <p ng-show="myForm.description.$invalid && !myForm.description.$pristine && myForm.description.$touched && !myForm.description.$error.minlength" class="help-block">Description is required.</p>
+                    <p ng-show="myForm.description.$error.maxlength && myForm.description.$touched" class="help-block">Description is too long.</p>
                 </div>
             </div>
 
@@ -29,7 +34,7 @@
                         <input type="checkbox" name="isPrivate" ng-model="collection.isprivate">Is private<br>
                     </div>
                     <div class="col-md-offset-2 col-md-3">
-                        <input type="button" value="Add" class="btn btn-default" ng-click="createCollection(collection)" />
+                        <input type="button" value="Add" class="btn btn-default" ng-click="createCollection(collection)" ng-disabled="myForm.$invalid"  />
                     </div>
                 </div>
             </div>
