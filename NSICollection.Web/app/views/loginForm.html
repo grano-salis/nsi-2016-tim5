@@ -2,7 +2,7 @@
     <div class="row addCollectionForm"  ng-controller="loginCtrl">
         <div class="col-md-7">
 
-            <form class="form-horizontal">
+            <form name="myForm3" class="form-horizontal" novalidate>
                 <h4 class="col-md-offset-4">Register</h4>
                 <hr />
 
@@ -10,8 +10,11 @@
                     <div class="col-md-offset-1">
                         <span class="col-md-2 control-label"><strong>UserName</strong></span>
                     </div>
-                    <div class="col-md-6">
-                        <input type="text" name="title" ng-model="user.Username" class="form-control">
+                    <div class="col-md-6" ng-class="{ 'has-error' : myForm3.username.$invalid && !myForm3.username.$pristine && myForm3.username.$dirty}">
+                        <input type="text" name="username" ng-model="user.Username" class="form-control" ng-minlength="3" ng-maxlength="15" required>
+                        <p ng-show="myForm3.username.$invalid && !myForm3.username.$pristine && myForm3.username.$touched && !myForm3.username.$error.minlength" class="help-block">Username is required.</p>
+                        <p ng-show="myForm3.username.$error.minlength && myForm3.username.$touched" class="help-block">Username is too short.</p>
+                        <p ng-show="myForm3.username.$error.maxlength && myForm3.username.$touched" class="help-block">Username is too long.</p>
                     </div>
                 </div>
 
@@ -19,8 +22,9 @@
                     <div class="col-md-offset-1">
                         <span class="col-md-2 control-label"><strong>Email</strong></span>
                     </div>
-                    <div class="col-md-6">
-                        <input type="text" name="title" ng-model="user.Email" class="form-control">
+                    <div class="col-md-6" ng-class="{ 'has-error' : myForm3.mail.$invalid && !myForm3.mail.$pristine && myForm3.mail.$dirty}">
+                        <input type="email" name="mail" ng-model="user.Email" class="form-control">
+                        <p ng-show="myForm3.mail.$invalid && !myForm3.mail.$pristine && myForm3.mail.$touched" class="help-block">Incorrect email.</p>
                     </div>
                 </div>
 
@@ -28,8 +32,11 @@
                     <div class="col-md-offset-1">
                         <span class="col-md-2 control-label"><strong>Password</strong></span>
                     </div>
-                    <div class="col-md-6">
-                        <input type="text" name="title" ng-model="user.Password" class="form-control">
+                    <div class="col-md-6" ng-class="{ 'has-error' : myForm3.pass.$invalid && !myForm3.pass.$pristine && myForm3.pass.$dirty}">
+                        <input type="password" name="pass" ng-model="user.Password" class="form-control" ng-minlength="6" ng-maxlength="14" required>
+                        <p ng-show="myForm3.pass.$invalid && !myForm3.pass.$pristine && myForm3.pass.$touched && !myForm3.pass.$error.minlength" class="help-block">Password is required.</p>
+                        <p ng-show="myForm3.pass.$error.minlength && myForm3.pass.$touched" class="help-block">Password is too short.</p>
+                        <p ng-show="myForm3.pass.$error.maxlength && myForm3.pass.$touched" class="help-block">Password is too long.</p>
                     </div>
                 </div>
 
@@ -57,7 +64,7 @@
                             <input type="checkbox" name="rememberMe">Register<br>
                         </div>
                         <div class="col-md-offset-2 col-md-3">
-                            <input type="button" value="Register" ng-click="registerUser(user)" class="btn btn-default" />
+                            <input type="button" value="Register" ng-click="registerUser(user)" class="btn btn-default" ng-disabled="myForm3.$invalid" />
                         </div>
                     </div>
                 </div>
