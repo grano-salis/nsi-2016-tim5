@@ -26,5 +26,8 @@ namespace EchoService.DataContracts
 
         [DataMember]
         public Metadata Metadata { get; set; }
+
+        [DataMember]
+        public string Attachment { get; set; }
     }
 }

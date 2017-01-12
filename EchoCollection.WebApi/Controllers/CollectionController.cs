@@ -26,6 +26,7 @@ namespace EchoCollection.Api.Controllers
             {
                 Collection = new EchoService.DataContracts.Collection
                 {
+                    ID = collection.ID,
                     Description = collection.Description,
                     IsPrivate = collection.IsPrivate,
                     Title = collection.Title
@@ -33,8 +34,12 @@ namespace EchoCollection.Api.Controllers
             };
             using (EchoCollectionClient client = new EchoCollectionClient())
             {
-                client.SaveCollection(request);
+                if (collection.ID == 0)
+                    client.SaveCollection(request);
+                else
+                    client.UpdateCollection(request);
             }
+           
             // TODO: Save to database
             return string.Format("Collection {0} successfully added", result);
         }

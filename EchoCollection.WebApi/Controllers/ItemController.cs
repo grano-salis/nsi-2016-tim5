@@ -4,6 +4,7 @@ using EchoCollection.WebApi.Helpers;
 using EchoService.DataContracts;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -24,10 +25,14 @@ namespace EchoCollection.WebApi.Controllers
             request.Item = new EchoService.DataContracts.Item
             {
                 DocumentTypeId = item.DocumentType.ID,
+                CollectionId = item.CollectionId,
+                ID = item.ID,
                 IsPrivate = item.IsPrivate,
                 Title = item.Title,
+                Attachment = item.Attachment,
                 Metadata = new Metadata
                 {
+                    ID = item.Metadata.ID,
                     Abstract = item.Metadata.Abstract,
                     Author = item.Metadata.Author,
                     Date = item.Metadata.Date,
@@ -40,10 +45,22 @@ namespace EchoCollection.WebApi.Controllers
             };
             using (var client = new EchoCollectionClient())
             {
-                client.SaveItem(request);
+                if (item.ID == 0)
+                    client.AddItem(request);
+                else
+                    client.UpdateItem(request);
             }
 
             return string.Format("Item with title: '{0}', Document Type: '{1}' has been added successfully.", item.Title, item.DocumentType);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [Route("AddAttachment")]
+        public string AddAttachment(object attachment)
+        {
+            
+            return string.Format("Item with title: '{0}', Document Type: '{1}' has been added successfully.", "" ,"");
         }
 
         [HttpGet]

@@ -25,11 +25,23 @@
   <wsdl:message name="IEchoCollection_SaveCollection_OutputMessage">
     <wsdl:part name="parameters" element="tns:SaveCollectionResponse" />
   </wsdl:message>
-  <wsdl:message name="IEchoCollection_SaveItem_InputMessage">
-    <wsdl:part name="parameters" element="tns:SaveItem" />
+  <wsdl:message name="IEchoCollection_UpdateCollection_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCollection" />
   </wsdl:message>
-  <wsdl:message name="IEchoCollection_SaveItem_OutputMessage">
-    <wsdl:part name="parameters" element="tns:SaveItemResponse" />
+  <wsdl:message name="IEchoCollection_UpdateCollection_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCollectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEchoCollection_AddItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddItem" />
+  </wsdl:message>
+  <wsdl:message name="IEchoCollection_AddItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEchoCollection_UpdateItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateItem" />
+  </wsdl:message>
+  <wsdl:message name="IEchoCollection_UpdateItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateItemResponse" />
   </wsdl:message>
   <wsdl:message name="IEchoCollection_GetDocTypes_InputMessage">
     <wsdl:part name="parameters" element="tns:GetDocTypes" />
@@ -50,9 +62,17 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IEchoCollection/SaveCollection" message="tns:IEchoCollection_SaveCollection_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IEchoCollection/SaveCollectionResponse" message="tns:IEchoCollection_SaveCollection_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="SaveItem">
-      <wsdl:input wsaw:Action="http://tempuri.org/IEchoCollection/SaveItem" message="tns:IEchoCollection_SaveItem_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IEchoCollection/SaveItemResponse" message="tns:IEchoCollection_SaveItem_OutputMessage" />
+    <wsdl:operation name="UpdateCollection">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEchoCollection/UpdateCollection" message="tns:IEchoCollection_UpdateCollection_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEchoCollection/UpdateCollectionResponse" message="tns:IEchoCollection_UpdateCollection_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddItem">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEchoCollection/AddItem" message="tns:IEchoCollection_AddItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEchoCollection/AddItemResponse" message="tns:IEchoCollection_AddItem_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateItem">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEchoCollection/UpdateItem" message="tns:IEchoCollection_UpdateItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEchoCollection/UpdateItemResponse" message="tns:IEchoCollection_UpdateItem_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetDocTypes">
       <wsdl:input wsaw:Action="http://tempuri.org/IEchoCollection/GetDocTypes" message="tns:IEchoCollection_GetDocTypes_InputMessage" />
@@ -88,8 +108,26 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SaveItem">
-      <soap:operation soapAction="http://tempuri.org/IEchoCollection/SaveItem" style="document" />
+    <wsdl:operation name="UpdateCollection">
+      <soap:operation soapAction="http://tempuri.org/IEchoCollection/UpdateCollection" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddItem">
+      <soap:operation soapAction="http://tempuri.org/IEchoCollection/AddItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateItem">
+      <soap:operation soapAction="http://tempuri.org/IEchoCollection/UpdateItem" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

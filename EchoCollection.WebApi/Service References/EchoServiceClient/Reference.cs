@@ -33,11 +33,23 @@ namespace EchoCollection.WebApi.EchoServiceClient {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEchoCollection/SaveCollection", ReplyAction="http://tempuri.org/IEchoCollection/SaveCollectionResponse")]
         System.Threading.Tasks.Task<EchoService.DataContracts.AddCollectionResponse> SaveCollectionAsync(EchoService.DataContracts.AddCollectionRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEchoCollection/SaveItem", ReplyAction="http://tempuri.org/IEchoCollection/SaveItemResponse")]
-        EchoService.DataContracts.AddItemResponse SaveItem(EchoService.DataContracts.AddItemRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEchoCollection/UpdateCollection", ReplyAction="http://tempuri.org/IEchoCollection/UpdateCollectionResponse")]
+        EchoService.DataContracts.AddCollectionResponse UpdateCollection(EchoService.DataContracts.AddCollectionRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEchoCollection/SaveItem", ReplyAction="http://tempuri.org/IEchoCollection/SaveItemResponse")]
-        System.Threading.Tasks.Task<EchoService.DataContracts.AddItemResponse> SaveItemAsync(EchoService.DataContracts.AddItemRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEchoCollection/UpdateCollection", ReplyAction="http://tempuri.org/IEchoCollection/UpdateCollectionResponse")]
+        System.Threading.Tasks.Task<EchoService.DataContracts.AddCollectionResponse> UpdateCollectionAsync(EchoService.DataContracts.AddCollectionRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEchoCollection/AddItem", ReplyAction="http://tempuri.org/IEchoCollection/AddItemResponse")]
+        EchoService.DataContracts.AddItemResponse AddItem(EchoService.DataContracts.AddItemRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEchoCollection/AddItem", ReplyAction="http://tempuri.org/IEchoCollection/AddItemResponse")]
+        System.Threading.Tasks.Task<EchoService.DataContracts.AddItemResponse> AddItemAsync(EchoService.DataContracts.AddItemRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEchoCollection/UpdateItem", ReplyAction="http://tempuri.org/IEchoCollection/UpdateItemResponse")]
+        EchoService.DataContracts.AddItemResponse UpdateItem(EchoService.DataContracts.AddItemRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEchoCollection/UpdateItem", ReplyAction="http://tempuri.org/IEchoCollection/UpdateItemResponse")]
+        System.Threading.Tasks.Task<EchoService.DataContracts.AddItemResponse> UpdateItemAsync(EchoService.DataContracts.AddItemRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEchoCollection/GetDocTypes", ReplyAction="http://tempuri.org/IEchoCollection/GetDocTypesResponse")]
         EchoService.DataContracts.GetDocumentTypeResponse GetDocTypes();
@@ -97,12 +109,28 @@ namespace EchoCollection.WebApi.EchoServiceClient {
             return base.Channel.SaveCollectionAsync(request);
         }
         
-        public EchoService.DataContracts.AddItemResponse SaveItem(EchoService.DataContracts.AddItemRequest request) {
-            return base.Channel.SaveItem(request);
+        public EchoService.DataContracts.AddCollectionResponse UpdateCollection(EchoService.DataContracts.AddCollectionRequest request) {
+            return base.Channel.UpdateCollection(request);
         }
         
-        public System.Threading.Tasks.Task<EchoService.DataContracts.AddItemResponse> SaveItemAsync(EchoService.DataContracts.AddItemRequest request) {
-            return base.Channel.SaveItemAsync(request);
+        public System.Threading.Tasks.Task<EchoService.DataContracts.AddCollectionResponse> UpdateCollectionAsync(EchoService.DataContracts.AddCollectionRequest request) {
+            return base.Channel.UpdateCollectionAsync(request);
+        }
+        
+        public EchoService.DataContracts.AddItemResponse AddItem(EchoService.DataContracts.AddItemRequest request) {
+            return base.Channel.AddItem(request);
+        }
+        
+        public System.Threading.Tasks.Task<EchoService.DataContracts.AddItemResponse> AddItemAsync(EchoService.DataContracts.AddItemRequest request) {
+            return base.Channel.AddItemAsync(request);
+        }
+        
+        public EchoService.DataContracts.AddItemResponse UpdateItem(EchoService.DataContracts.AddItemRequest request) {
+            return base.Channel.UpdateItem(request);
+        }
+        
+        public System.Threading.Tasks.Task<EchoService.DataContracts.AddItemResponse> UpdateItemAsync(EchoService.DataContracts.AddItemRequest request) {
+            return base.Channel.UpdateItemAsync(request);
         }
         
         public EchoService.DataContracts.GetDocumentTypeResponse GetDocTypes() {

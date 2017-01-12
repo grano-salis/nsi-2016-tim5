@@ -2,12 +2,17 @@
 var app = angular.module('echo');
 
 app.controller('itemCtrl', function ($scope, $http, $filter, itemService) {
+
+    $scope.message = "";
     $scope.itemList = [];
+    $scope.collectionList = [];
+    $scope.defaultCollectionId = 0;
     $scope.message = "";
     $scope.item = {
         title: "",
         currentType: "",
         isprivate: false,
+        attachmentPath : "",
         metadata : {
             author: "",
             abstract: "",
@@ -18,6 +23,18 @@ app.controller('itemCtrl', function ($scope, $http, $filter, itemService) {
             extra: ""
         }
     };
+
+    itemService.GetCollections().then(function (data) {
+        var col = data.data.collections;
+        for (var i = 0; i < col.length; i++) {
+            var obj = {
+                title: col[i].Title,
+                id: col[i].ID
+            }
+            $scope.collectionList.push(obj);
+        }
+        $scope.defaultCollectionId = $filter("filter")($scope.collectionList, { title: 'Unfiled Items' });
+    });
     
     itemService.GetDocTypes().then(function (response) {
         for (var i = 0; i < response.data.DocumentTypes.length; i++) {
@@ -31,9 +48,26 @@ app.controller('itemCtrl', function ($scope, $http, $filter, itemService) {
 
     $scope.change = function (id) {
         var newTemp = $filter("filter")($scope.itemTypes, { ID: id });
-
         $scope.item.currentType = newTemp[0].DocumentTypeTitle;
     };
+
+    $scope.clear = function () {
+        $scope.item = {
+            title: "",
+            currentType: "",
+            isprivate: false,
+            attachmentPath: "",
+            metadata: {
+                author: "",
+                abstract: "",
+                publisher: "",
+                language: "",
+                url: "",
+                rights: "",
+                extra: ""
+            }
+        };
+    }
   
     $scope.addItem = function (item) {
         var Item = {
@@ -41,8 +75,9 @@ app.controller('itemCtrl', function ($scope, $http, $filter, itemService) {
             documentType: {
                 id: item.documenttypeid
             },
-            isprivate: item.isprivate
-            ,metadata: {
+            collectionId: item.collectionId != undefined && item.collectionId > 0 ? item.collectionId : $scope.defaultCollectionId[0].id,
+            isprivate: item.isprivate,
+            metadata: {
                 author: item.metadata.author,
                 abstract: item.metadata.abstract,
                 publisher: item.metadata.publisher,
@@ -54,8 +89,8 @@ app.controller('itemCtrl', function ($scope, $http, $filter, itemService) {
         };
 
         itemService.AddItem(Item).then(function (data) {
-            $scope.message = data.data;
-            alert(data.data);
+            $scope.message = "Item was successfuly created";
+            $scope.clear();
         });
     };   
 });
@@ -71,7 +106,7 @@ app.service('itemService', function ($http) {
             data: JSON.stringify(Item)
         });
     };
-
+ 
     fac.GetDocTypes = function () {
         return $http({
             url: serviceBase + 'api/Item/GetDocTypes',
@@ -79,6 +114,12 @@ app.service('itemService', function ($http) {
         });
     };
 
+    fac.GetCollections = function () {
+        return $http({
+            url: serviceBase + 'api/Collection/GetCollections',
+            method: 'GET'
+        });
+    }
     return fac;
 
 });

@@ -537,12 +537,21 @@ body {
     color: white;
 }
 
+.successMessage
+{
+    color:#2ce858;
+}
+
 .libraryForm {
     margin-top: -40%;
     color: white;
     position:relative;
 }
 
+.libraryForm hr {
+    max-width:200px;
+    margin-left:0px;
+}
 .css-treeview ul,
 .css-treeview li {
     padding: 0;
@@ -645,3 +654,6 @@ body {
     }
 }
 
+input#collId{
+    opacity:1;
+}

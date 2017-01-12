@@ -23,14 +23,17 @@
                             <option ng-repeat="item in itemTypes" ng-value="item.ID">{{item.DocumentTypeTitle}}</option>
                         </select>
                     </div>
-</div>
+            </div>
 
             <div class="form-group">
                 <div class="col-md-offset-1">
-                    <span class="col-md-2 control-label">Browse:&nbsp;</span>
+                    <span class="col-md-2 control-label"><strong>Collection</strong></span>
                 </div>
                 <div class="col-md-6">
-                    <input type="file" />
+                    <select id="itemType" class="form-control" ng-model="item.collectionId" ng-change="change(item.collectionId)">
+                        <option value="" disabled="disabled" selected="selected">Please choose...</option>
+                        <option ng-repeat="collection in collectionList" ng-value="collection.id">{{collection.title}}</option>
+                    </select>
                 </div>
             </div>
 
@@ -86,6 +89,9 @@
             </div>
         </div>
 
-
+        <br />
+        <br />
+        <br />
+        <label class="col-md-offset-2 col-md-10 successMessage">{{message}}</label>
     </form>
 </div>

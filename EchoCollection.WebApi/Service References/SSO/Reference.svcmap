@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="21302db3-8810-4611-94b9-6c798dee1ac8" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://do.mac.ba:8888/BusinessLogic/Identity.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Identity.xsd" MetadataType="Schema" ID="13060a71-5759-42b0-b1bc-e86f3bdb7841" SourceId="1" SourceUrl="http://do.mac.ba:8888/BusinessLogic/Identity.svc?xsd=xsd3" />
+    <MetadataFile FileName="Identity1.xsd" MetadataType="Schema" ID="0b9e3500-8fde-466a-a843-a0f33e19bdae" SourceId="1" SourceUrl="http://do.mac.ba:8888/BusinessLogic/Identity.svc?xsd=xsd2" />
+    <MetadataFile FileName="Identity2.xsd" MetadataType="Schema" ID="db8e5e6b-eff6-43d7-a968-94a8313f52a3" SourceId="1" SourceUrl="http://do.mac.ba:8888/BusinessLogic/Identity.svc?xsd=xsd1" />
+    <MetadataFile FileName="Identity3.xsd" MetadataType="Schema" ID="8609d83f-10bd-4aed-a6c4-58b374bd037e" SourceId="1" SourceUrl="http://do.mac.ba:8888/BusinessLogic/Identity.svc?xsd=xsd0" />
+    <MetadataFile FileName="Identity.wsdl" MetadataType="Wsdl" ID="9c67ba3d-3a58-440c-b0bb-99d0362038e2" SourceId="1" SourceUrl="http://do.mac.ba:8888/BusinessLogic/Identity.svc?wsdl" />
+    <MetadataFile FileName="Identity.disco" MetadataType="Disco" ID="64da32f3-dcbc-460a-bee5-3a4bd684ce5a" SourceId="1" SourceUrl="http://do.mac.ba:8888/BusinessLogic/Identity.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,11 +1,14 @@
 ﻿
 <div class="col-md-12" ng-controller="libraryCtrl">
     <div class="css-treeview libraryForm col-md-5 col-lg-offset-1">
+        <i ng-click="exportItems()" class="fa fa-2x fa-download text-primary sr-icons"></i>
+        <hr />
         <ul>
-            <li ng-repeat="collection in collectionItemsList.data.collections">
-                <input type="checkbox" id="item-0" /><label for="item-0" class="labelCollectionIcon" ng-click="showCollection(collection)">{{collection.Title}}</label>
+            <li ng-repeat="collection in collectionItemsList.data.collections" context-menu="menuCollectionOptions">
+                <input type="checkbox" id="item-0" />
+                <label for="item-0" class="labelCollectionIcon" ng-click="showCollection(collection)">{{collection.Title}}</label>
                 <ul>
-                    <li ng-repeat="item in collection.Items">
+                    <li ng-repeat="item in collection.Items" context-menu="menuItemOptions">
                         <input type="checkbox" id="item-0-0" /><label for="item-0-0" ng-click="showMetadata(item)"><i class="fa fa-1x fa-file-o text-primarywhite sr-icons">&nbsp;</i>{{item.Title}}</label>
                     </li>
                 </ul>
@@ -24,7 +27,7 @@
                 </td>
                 <td class="col-md-offset-1 col-md-3">
                     <div>
-                        <input type="text" name="title" ng-model="collection.Title" class="form-control">
+                        <input ng-disabled="!clickOnEdit" type="text" name="title" ng-model="collection.Title" class="form-control">
                     </div>
                 </td>
             </tr>
@@ -39,7 +42,7 @@
                 </td>
                 <td class="col-md-offset-1 col-md-3">
                     <div>
-                        <textarea rows="2" cols="3" class="form-control" ng-model="collection.Description"></textarea>
+                        <textarea ng-disabled="!clickOnEdit" rows="2" cols="3" class="form-control" ng-model="collection.Description"></textarea>
                     </div>
                 </td>
             </tr>
@@ -52,9 +55,9 @@
                 </td>
                 <td>
                     <div class="checkbox col-lg-offset-1 col-md-5">
-                        <input type="checkbox" name="isPrivate" ng-model="collection.IsPrivate">Is private<br>
+                        <input ng-disabled="!clickOnEdit" type="checkbox" name="isPrivate" ng-model="collection.IsPrivate">Is private<br>
                     </div>
-                    <input type="button" value="Save" class="btn btn-default col-lg-offset-3" ng-click="saveCollection(collection)" />
+                    <input ng-disabled="!clickOnEdit" type="button" value="Save" class="btn btn-default col-lg-offset-3" ng-click="saveCollection(collection)" />
                 </td>
             </tr>
 
@@ -66,45 +69,62 @@
                 <td class="col-md-1">Title:</td>
                 <td class="col-md-offset-1 col-md-3">
                     <div>
-                        <input type="text" class="form-control" name="title" ng-model="item.Title">
+                        <input ng-disabled="!clickOnEdit" type="text" class="form-control" name="title" ng-model="item.Title">
                     </div>
                 </td>
             </tr>
-            <tr class="form-group">
-                <td class="col-md-1">Item Type:</td>
-                <td class="blackfont col-md-offset-1 col-md-3"><input type="text" class="form-control" name="title" ng-model="item.DocumentType"></td>
+
+            <tr>
+                <td class="col-md-1">Collection:</td>
+                <td class="blackfont col-md-offset-1 col-md-3">
+                    <select ng-disabled="!clickOnEdit" id="collectionType" class="form-control" ng-model="item.CollectionId" ng-change="change(item.collectionId)>
+                        <!--<option value="" disabled="disabled" selected="selected">Please choose...</option>-->
+                        <option ng-repeat="collection in collectionItemsList.data.collections" ng-selected="collection.Title == selectedCol" ng-value="collection.ID">{{collection.Title}}</option>
+                    </select>
+
+                </td>
             </tr>
+            <tr>
+                <td class="col-md-1">Document Type:</td>
+                <td class="blackfont col-md-offset-1 col-md-3">
+                    <select ng-disabled="!clickOnEdit" id="dataType" class="form-control">
+                        <!--<option value="" disabled="disabled" selected="selected">Please choose...</option>-->
+                        <option ng-repeat="documentType in documentTypes" ng-selected="documentType.DocumentTypeTitle == selectedDocType" ng-value="documentType.ID">{{documentType.DocumentTypeTitle}}</option>
+                    </select>
+
+                </td>
+            </tr>
+
+
+            
+
             <tr class="form-group">
                 <td class="col-md-1">Author:</td>
-                <td class="blackfont col-md-offset-1 col-md-3"><input type="text" class="form-control" name="title" ng-model="item.Metadata.Author"></td>
+                <td class="blackfont col-md-offset-1 col-md-3"><input ng-disabled="!clickOnEdit" type="text" class="form-control" name="title" ng-model="item.Metadata.Author"></td>
             </tr>
             <tr class="form-group">
                 <td class="col-md-1">Abstract:</td>
-                <td class="blackfont col-md-offset-1 col-md-3"><input type="text" class="form-control" name="title" ng-model="item.Metadata.Abstract"></td>
+                <td class="blackfont col-md-offset-1 col-md-3"><input ng-disabled="!clickOnEdit" type="text" class="form-control" name="title" ng-model="item.Metadata.Abstract"></td>
             </tr>
             <tr class="form-group">
                 <td class="col-md-1">Publisher:</td>
-                <td class="blackfont col-md-offset-1 col-md-3"><input type="text" class="form-control" name="title" ng-model="item.Metadata.Publisher"></td>
+                <td class="blackfont col-md-offset-1 col-md-3"><input ng-disabled="!clickOnEdit" type="text" class="form-control" name="title" ng-model="item.Metadata.Publisher"></td>
             </tr>
             <tr class="form-group">
                 <td class="col-md-1">Language:</td>
-                <td class="blackfont col-md-offset-1 col-md-3"><input type="text" class="form-control" name="title" ng-model="item.Metadata.Language"></td>
+                <td class="blackfont col-md-offset-1 col-md-3"><input ng-disabled="!clickOnEdit" type="text" class="form-control" name="title" ng-model="item.Metadata.Language"></td>
             </tr>
             <tr class="form-group">
                 <td class="col-md-1">URL:</td>
-                <td class="blackfont col-md-offset-1 col-md-3"><input type="text" class="form-control" name="title" ng-model="item.Metadata.Url"></td>
+                <td class="blackfont col-md-offset-1 col-md-3"><input ng-disabled="!clickOnEdit" type="text" class="form-control" name="title" ng-model="item.Metadata.Url"></td>
             </tr>
             <tr class="form-group">
                 <td class="col-md-1">Rights:</td>
-                <td class="blackfont col-md-offset-1 col-md-3"><input type="text" class="form-control" name="title" ng-model="item.Metadata.Rights"></td>
+                <td class="blackfont col-md-offset-1 col-md-3"><input ng-disabled="!clickOnEdit" type="text" class="form-control" name="title" ng-model="item.Metadata.Rights"></td>
             </tr>
             <tr class="form-group">
                 <td class="col-md-1">Extra:</td>
-                <td class="blackfont col-md-offset-1 col-md-3"><input type="text" class="form-control" name="title" ng-model="item.Metadata.Extra"></td>
-            </tr>
-            <tr class="form-group">
-                <td class="col-md-1">Date:</td>
-                <td class="blackfont col-md-offset-1 col-md-3"><input type="text" class="form-control" name="title" ng-model="item.Metadata.Date" disabled="disabled"></td>
+                <td class="blackfont col-md-offset-1 col-md-3"><input ng-disabled="!clickOnEdit" type="text" class="form-control" name="title" ng-model="item.Metadata.Extra"></td>
             </tr>
             <tr class="form-group">
                 <td class="col-md-1">
@@ -112,9 +132,9 @@
                 </td>
                 <td>
                     <div class="checkbox col-lg-offset-1 col-md-5">
-                        <input type="checkbox" name="isPrivate" ng-model="item.IsPrivate">Is private<br>
+                        <input ng-disabled="!clickOnEdit" type="checkbox" name="isPrivate" ng-model="item.IsPrivate">Is private<br>
                     </div>
-                    <input type="button" value="Save" class="btn btn-default col-lg-offset-3" ng-click="saveItem(item)" />
+                    <input ng-disabled="!clickOnEdit" type="button" value="Save" class="btn btn-default col-lg-offset-3" ng-click="saveItem(item)" />
                 </td>
             </tr>
         </table>

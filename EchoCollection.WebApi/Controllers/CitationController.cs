@@ -130,16 +130,16 @@ namespace EchoCollection.WebApi.Controllers
             foreach (var item in items.Items)
             {
                 CSLCompatibleItem CslItem = new CSLCompatibleItem();
-                CslItem.@abstract = item.Metadata.Abstract;
-                CslItem.id = item.ID.ToString();
-                CslItem.issued = item.Metadata.Date.ToString("yyyy-MM-dd");
-                CslItem.language = item.Metadata.Language;
-                CslItem.note = item.Metadata.Extra;
-                CslItem.publisher = item.Metadata.Publisher;
-                CslItem.title = item.Title;
+                CslItem.@abstract = "bla";// item.Metadata != null ? item.Metadata.Abstract : string.Empty;
+                CslItem.id = "bla";//item.ID.ToString();
+                CslItem.issued = "bla";//item.Metadata != null ? item.Metadata.Date.ToString("yyyy-MM-dd") : string.Empty;
+                CslItem.language = "bla";//item.Metadata != null ? item.Metadata.Language : string.Empty;
+                CslItem.note = "bla";//item.Metadata != null ? item.Metadata.Extra : string.Empty;
+                CslItem.publisher = "bla";//item.Metadata != null ? item.Metadata.Publisher : string.Empty;
+                CslItem.title = "bla";//item.Metadata != null ? item.Title : string.Empty;
                 CslItem.type = "Book";
-                CslItem.URL = item.Metadata.Url;
-
+                CslItem.URL = "bla";//item.Metadata != null ? item.Metadata.Url : string.Empty;
+                CslItem.author = "sss";
                 CSLCompatibleItems.Add(CslItem);
             }
 

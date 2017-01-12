@@ -34,7 +34,11 @@ namespace EchoService
                 int id = 0;
                 bool isPrivate;
                 Int32.TryParse(dr[0].ToString(), out id);
-                bool.TryParse(dr[3].ToString(), out isPrivate);
+                if (dr[3].ToString() == "0")
+                    isPrivate = false;
+                else
+                    isPrivate = true;
+              
                 if (id == 0)
                 {
                     response.ResponseType = ResponseType.Failed;
@@ -150,7 +154,35 @@ namespace EchoService
             };
         }
 
-        public AddItemResponse SaveItem(AddItemRequest request)
+        public AddCollectionResponse UpdateCollection(AddCollectionRequest request)
+        {
+            if (request == null || request.Collection == null)
+            {
+                return new AddCollectionResponse
+                {
+                    Message = "Could not add collection",
+                    ResponseType = ResponseType.Succeeded
+                };
+            }
+
+            string oradb = System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            OracleConnection conn = new OracleConnection(oradb);
+            conn.Open();
+            OracleCommand cmd = new OracleCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = "update collection set title = '" + request.Collection.Title + "', description = '" + request.Collection.Description + "', isprivate = '" + Convert.ToInt32(request.Collection.IsPrivate).ToString() + "' where id = " + request.Collection.ID ;
+            cmd.CommandType = CommandType.Text;
+            OracleDataReader dr = cmd.ExecuteReader();
+            GetCollectionsResponse response = new GetCollectionsResponse();
+            conn.Dispose();
+            conn.Close();
+            return new AddCollectionResponse
+            {
+                ResponseType = ResponseType.Succeeded
+            };
+        }
+
+        public AddItemResponse AddItem(AddItemRequest request)
         {
             if (request == null || request.Item == null)
             {
@@ -171,8 +203,7 @@ namespace EchoService
             cmd.CommandText = query1;
             var rd = cmd.ExecuteScalar();
 
-
-            string query2 = "insert into item (id, collectionid, documenttypeid, isprivate, title, createdby, datecreated, modifiedby, datemodified, isdeleted) values('" + rd + "','19','"
+            string query2 = "insert into item (id, collectionid, documenttypeid, isprivate, title, createdby, datecreated, modifiedby, datemodified, isdeleted) values('" + rd + "','" + request.Item.CollectionId + "','"
                 + request.Item.DocumentTypeId.ToString() + "','" + Convert.ToInt32(request.Item.IsPrivate).ToString()
                 + "','" + request.Item.Title + "','1', sysdate, '1', sysdate, '0')";
             cmd.CommandText = query2;
@@ -193,6 +224,49 @@ namespace EchoService
             {
                 ResponseType = ResponseType.Succeeded
             };
+        }
+
+        public AddItemResponse UpdateItem(AddItemRequest request)
+        {
+            if (request == null || request.Item == null)
+            {
+                return new AddItemResponse
+                {
+                    Message = "Could not add item",
+                    ResponseType = ResponseType.Succeeded
+                };
+            }
+
+            string oradb = System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            OracleConnection conn = new OracleConnection(oradb);
+            conn.Open();
+            OracleCommand cmd = new OracleCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = conn;
+            
+            string query = "update item set collectionid = '" + request.Item.CollectionId.ToString() + "',documenttypeid = " + request.Item.DocumentTypeId + ", isprivate='" +  Convert.ToInt32(request.Item.IsPrivate).ToString()
+                        + "', title = '" + request.Item.Title + "', modifiedby ='1', datemodified = sysdate where id = " + request.Item.ID; 
+
+            cmd.CommandText = query;
+            cmd.CommandType = CommandType.Text;
+            var id = cmd.ExecuteScalar();
+            conn.Close();
+            OracleConnection conn2 = new OracleConnection(oradb);
+            conn2.Open();
+            cmd.Connection = conn2;
+            string query2 = "update metadata set  author = '" + request.Item.Metadata.Author + "', abstract = '"
+                + request.Item.Metadata.Abstract + "', publisher = '" + request.Item.Metadata.Publisher + "', language = '" + request.Item.Metadata.Language + "', url = '" + request.Item.Metadata.Url
+                + "', rights= '" + request.Item.Metadata.Rights + "',  extra= '" + request.Item.Metadata.Extra + "' where id = " + request.Item.Metadata.ID;
+            
+            cmd.CommandText = query2;
+
+            OracleDataReader dr2 = cmd.ExecuteReader();
+            conn2.Close();
+            return new AddItemResponse
+            {
+                ResponseType = ResponseType.Succeeded
+            };
+
         }
 
         public GetItemsResponse GetItems()

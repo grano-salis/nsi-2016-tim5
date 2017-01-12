@@ -24,7 +24,13 @@ namespace EchoService
         AddCollectionResponse SaveCollection(AddCollectionRequest request);
 
         [OperationContract]
-        AddItemResponse SaveItem(AddItemRequest request);
+        AddCollectionResponse UpdateCollection(AddCollectionRequest request);
+
+        [OperationContract]
+        AddItemResponse AddItem(AddItemRequest request);
+
+        [OperationContract]
+        AddItemResponse UpdateItem(AddItemRequest request);
 
         [OperationContract]
         GetDocumentTypeResponse GetDocTypes();

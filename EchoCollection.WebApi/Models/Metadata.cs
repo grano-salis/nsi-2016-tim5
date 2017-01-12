@@ -7,6 +7,7 @@ namespace EchoCollection.WebApi.Models
 {
     public class Metadata
     {
+        public int ID { get; set; }
         public string Author { get; set; }
         public string Abstract { get; set; }
         public string Publisher { get; set; }

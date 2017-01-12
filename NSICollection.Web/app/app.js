@@ -1,7 +1,7 @@
 (function () {
 
     // Declare app level module which depends on views, and components
-    var app = angular.module('echo', ['ngRoute']);
+    var app = angular.module('echo', ['ngRoute', 'ui.bootstrap.contextMenu']);
 
     app.config(function ($routeProvider) {
         $routeProvider

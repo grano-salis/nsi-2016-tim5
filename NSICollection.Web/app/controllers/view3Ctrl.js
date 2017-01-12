@@ -1,13 +1,14 @@
 'use strict';
 var app = angular.module('echo');
 
-app.controller('Ctrl3', function ($scope, $http, collectionService) {
+app.controller('Ctrl3', function ($scope, $http, collectionService, $timeout) {
     $scope.collectionList = [];
     $scope.collection = {
         title : "",
         description: "",
         isprivate: false
     };
+    $scope.message = "";
     collectionService.GetCollections().then(function (data) {
         var col = data.data.collections;
         for (var i = 0; i < col.length; i++) {
@@ -26,20 +27,27 @@ app.controller('Ctrl3', function ($scope, $http, collectionService) {
         var Collection = {
             title: item.title,
             description: item.description,
-            isprivate: item.isprivate
+            isprivate: item.isprivate   
         };
         collectionService.AddCollection(Collection).then(function (data) {
-            console.log("succeeded");
+            $scope.message = "Collection was successfuly created";
         });
+       
+
+        $timeout(function () { $scope.callAtTimeout(); }, 3000);
         $scope.clear();
     };
 
+    $scope.callAtTimeout = function () {
+        console.log("$scope.callAtTimeout - Timeout occurred");
+    }
     $scope.clear = function () {
         $scope.collection = {
             title: "",
             description: "",
             isprivate: false
         };
+        $scope.message = "";
     }
 });
 

@@ -39,17 +39,45 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="SaveItem">
+  <xs:element name="UpdateCollection">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/EchoService.DataContracts" minOccurs="0" name="request" nillable="true" type="q5:AddItemRequest" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/EchoService.DataContracts" minOccurs="0" name="request" nillable="true" type="q5:AddCollectionRequest" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="SaveItemResponse">
+  <xs:element name="UpdateCollectionResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/EchoService.DataContracts" minOccurs="0" name="SaveItemResult" nillable="true" type="q6:AddItemResponse" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/EchoService.DataContracts" minOccurs="0" name="UpdateCollectionResult" nillable="true" type="q6:AddCollectionResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddItem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/EchoService.DataContracts" minOccurs="0" name="request" nillable="true" type="q7:AddItemRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddItemResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/EchoService.DataContracts" minOccurs="0" name="AddItemResult" nillable="true" type="q8:AddItemResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateItem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/EchoService.DataContracts" minOccurs="0" name="request" nillable="true" type="q9:AddItemRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateItemResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/EchoService.DataContracts" minOccurs="0" name="UpdateItemResult" nillable="true" type="q10:AddItemResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -61,7 +89,7 @@
   <xs:element name="GetDocTypesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/EchoService.DataContracts" minOccurs="0" name="GetDocTypesResult" nillable="true" type="q7:GetDocumentTypeResponse" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/EchoService.DataContracts" minOccurs="0" name="GetDocTypesResult" nillable="true" type="q11:GetDocumentTypeResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
