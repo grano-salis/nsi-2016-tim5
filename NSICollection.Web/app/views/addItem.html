@@ -1,5 +1,5 @@
 ﻿<div class="row addItemForm" ng-controller="itemCtrl">
-    <form class="form-horizontal">
+    <form name="myForm" class="form-horizontal" novalidate>
         <div class="col-md-5 col-lg-offset-1">
 
             <h4 class="text-center">Create item</h4>
@@ -8,8 +8,11 @@
                 <div class="col-md-offset-1">
                     <span class="col-md-2 control-label"><strong>Title</strong></span>
                 </div>
-                <div class="col-md-6">
-                    <input type="text" name="title" class="form-control" ng-model="item.title">
+                <div class="col-md-6" ng-class="{ 'has-error' : myForm.title.$invalid && !myForm.title.$pristine && myForm.title.$dirty}">
+                    <input type="text" name="title" class="form-control" ng-model="item.title" ng-minlength="3" ng-maxlength="15" required>
+                    <p ng-show="myForm.title.$invalid && !myForm.title.$pristine && myForm.title.$touched && !myForm.title.$error.minlength" class="help-block">Title is required.</p>
+                    <p ng-show="myForm.title.$error.minlength && myForm.title.$touched" class="help-block">Title is too short.</p>
+                    <p ng-show="myForm.title.$error.maxlength && myForm.title.$touched" class="help-block">Title is too long.</p>
                 </div>
             </div>
 
@@ -43,7 +46,7 @@
                         <input type="checkbox" name="isPrivate" ng-model="item.isprivate">Is private<br>
                     </div>
                     <div class="col-md-offset-2 col-md-3">
-                        <input type="button" value="Add" class="btn btn-default" ng-click="addItem(item)" />
+                        <input type="button" value="Add" class="btn btn-default" ng-click="addItem(item)" ng-disabled="myForm.$invalid" />
                     </div>
                 </div>
             </div>
